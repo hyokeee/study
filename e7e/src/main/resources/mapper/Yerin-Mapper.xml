@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ykh.merong.mapper.YerinMapper">
+<select id="listData" resultType="YerinVO">
+	SELECT TITLE, SCONT, SNAME 
+	FROM YERIN
+</select>
+
+<select id="oneData" parameterType="YerinVO" resultType="YerinVO">
+	SELECT TITLE, SCONT, SNAME
+	FROM YERIN
+	WHERE TITLE = #{title}
+</select>
+
+<insert id="insertData" parameterType="YerinVO">
+	INSERT INTO YERIN (TITLE, SCONT, SNAME)
+	VALUES (#{title}, #{scont}, #{sname})
+</insert>
+
+<update id="updateData" parameterType="YerinVO">
+	UPDATE YERIN 
+	SET
+	SCONT = #{scont},
+	SNAME = #{sname}
+	WHERE TITLE = #{title}
+</update>
+
+<delete id="deleteData" parameterType="YerinVO">
+	DELETE 
+	FROM YERIN
+	WHERE TITLE = #{title} 
+</delete>
+</mapper>

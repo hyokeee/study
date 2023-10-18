@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:security="http://www.springframework.org/schema/security"
+   xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.8.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+   <bean id="cutomUserDetailsService" class="com.minu.sec.security.CustomUserDetailsService"/>
+   <bean id="customAccessDeniedHandler" class="com.minu.sec.security.CustomAccessDeniedHandler"/>
+   <bean id="customLoginSuccessHandler" class="com.minu.sec.security.CustomLoginSuccessHandler"/>
+   
+   <security:http>
+      <!-- 요거이 없으면 추측해야 해서 힘듦 -->
+      <security:access-denied-handler ref="customAccessDeniedHandler"/>
+      <security:intercept-url pattern="/oho/suji" access="permitAll" />
+       <security:intercept-url pattern="/oho/sukil" access="hasRole('ROLE_SUKIL')" /> 
+      <!-- 사용자가 입력한 UR로 그대로 가게 둘 때까지는 필요하진 않지만 
+      		로그인 성공후에 특정 URL로 보내고 싶을 떄는 success-handler가 필요!
+      -->
+      <security:form-login authentication-success-handler-ref="customLoginSuccessHandler"   login-page="/slogin" />
+      <security:logout logout-url="/logout" />
+   </security:http>
+
+   <security:authentication-manager id="authMgr">
+      <security:authentication-provider user-service-ref="cutomUserDetailsService">
+         <security:password-encoder ref="bCryptPasswordEncoder" />
+      </security:authentication-provider>
+   </security:authentication-manager>
+
+</beans>

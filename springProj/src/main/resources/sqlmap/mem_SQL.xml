@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mem">
+	<insert id="addMem" parameterType="memVO">
+		insert into MEM
+		(
+			USER_ID, PASSWORD, COIN
+			, DATE_OF_BIRTH, GENDER, NATIONALITY
+			, DEVELOPER, FOREIGNER
+		)
+		values
+		(
+			#{userId}, #{password}, #{coin}
+			, #{dateOfBirth}, #{gender}, #{nationality}
+			, #{developer}, #{foreigner}
+		)
+	</insert>
+	<insert id="addAddr" parameterType="addrVO">
+		insert into ADDR
+		(
+			USER_ID, ZONECODE
+			, ADDRESS, BUILDING_NAME
+		)
+		values
+		(
+			#{userId}, #{zonecode}
+			, #{address}, #{buildingName}
+		)
+	</insert>
+</mapper>
