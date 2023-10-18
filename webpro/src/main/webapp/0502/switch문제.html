@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+function proc1(){
+	//두개의 수와 연산자를 입력한다.
+	let su1 = parseInt(prompt("정수 입력"));
+	let op = prompt("연산자를 입력하세요 \n (+,-,*,/,% 중 하나)")
+	let su2 = parseInt(prompt("정수 입력"));
+
+	//비교
+	res = "";
+	switch(op){
+	case "+":
+		res = su1+su2;
+		break;
+	case "-":
+		res = su1-su2;
+		break;
+	case "*":
+		res = su1*su2;
+		break;
+	case "/":
+		res = su1/su2;
+		break;
+	case "%":
+		res = su1%su2;
+		break;
+	}
+	//출력 형식
+	str = `${su1} ${op} ${su2} = ${res}`;
+	
+	document.getElementById("result1").innerHTML = str;
+	}
+	
+function proc2(){
+	//접수를 입력받는 prompt
+	let score = parseInt(prompt("점수 입력","1~100"));
+	
+	
+	
+	//비교
+	if(score<0||score>100){
+		alert("입력 범위를 벗어났습니다");
+		return false;
+	}
+	
+	/* 	if로 비교
+	if(score>=90){
+		alert("A");
+	}else if(score>=80){
+		alert("B");
+	}else if(score>=70){
+		alert("C");
+	}else if(score>=60){
+		alert("D");
+	}else {
+		alert("F");
+	} */
+	
+	
+	//case로 비교
+	result2 = "";
+	switch(parseInt(score/10)){
+	case 10:
+	case 9:
+		result2 = "A학점";
+		break;
+	case 8:
+		result2 = "B학점";
+		break;
+	case 7:
+		result2 = "C학점";
+		break;
+	case 6:
+		result2 = "D학점";
+		break;
+	default:
+		result2 = "F학점";
+		break;
+	}
+	
+	//출력 내용
+	str2 = `점수 : ${score} <br> 학점 : ${result2}`
+			
+	//id가 result2인 요소를 검색해서 str를 출력
+	document.getElementById("result2").innerHTML = str2;
+
+}
+		
+	
+
+</script>
+</head>
+<body>
+<div class = "box">
+   <h3>prompt를 이용하여 2개의 수와 연산자를 입력한다.</h3>
+   <h3>연산자를 비교하여(switch) 계산 후 결과를 출력한다.</h3>
+   
+   <input type="button" value="확인" onclick="proc1()">
+   <br><br>
+   <div id="result1" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>prompt를 이용하여 점수를 입력하여 학점을 출력한다.</h3>
+   <h3>점수를 비교하여(switch) 결과(A~F)를 출력한다.</h3>
+   
+   <input type="button" value="확인" onclick="proc2()">
+   <br><br>
+   <div id="result2" class="result"></div>
+</div>
+</body>
+</html>

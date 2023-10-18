@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/mystyle.css">
+<title>Insert title here</title>
+<script>
+proc1 = () => {
+	let sum = 0;
+	sustr ="";
+	
+	while(true){
+		//입력
+		let i = parseInt(prompt("입력하세요"));
+		//입력값이 0이면 break;
+		if(i==0){
+			break;
+		} 
+		//아니면 입력값을 더한다
+		sustr += i + " ";
+		sum += i;
+	}
+	
+	//출력내용
+	str = "입력된 값들 = " + sustr + "<br>";
+	str += "더한 합 = " + sum;
+	
+	//출력
+	vresult = document.getElementById("result1");
+	vresult.innerHTML = str;
+	
+}
+
+proc2 = () => {
+	su = " ";
+	for(let i=1; i<=10; i++){
+		for(let k=1; k<=10; k++){
+			if((i+k)%3!=0){
+				continue;				
+			} 
+			su += i+ " + " + k + " = " + (i+k) + "<br>";
+		}
+	}
+	vresult = document.getElementById("result2");
+	vresult.innerHTML = su;
+	
+}
+
+proc3 = () => {
+	su = " ";
+	for(let i=1; i<=100; i++){
+		if(i%2==0 && i%3==0){
+			su += i+"<br>";
+		}
+	}
+	vresult = document.getElementById("result3");
+	vresult.innerHTML = su;
+}
+
+proc4 = () => {
+	var result ="";
+	while(true){
+		//입력
+		su1 = parseInt(prompt("첫번째 숫자"));
+		su2 = parseInt(prompt("두번째 숫자"));
+		//비교 - 0  0 
+		if(su1==0 && su2==0){
+			break;
+		}
+		//비교 - 수1 + 수2 <100 continue
+		if(su1+su2<100){
+			continue;
+		}
+		//수1,수2 result에 누적
+		result += su1 + " + " + su2 + " = " + (su1+su2) +"<br>";
+	}
+	//출력
+	vresult = document.getElementById("result4");
+	vresult.innerHTML = result;
+}
+</script>
+</head>
+<body>
+<div class = "box">
+   <h3>사용자가 입력한 값을 계속 더하고, 
+   사용자가 0을 입력하면 그때까지 누적된 값을 출력</h3>
+   
+   <input type="button" value="확인" onclick="proc1()">
+   <br><br>
+   <div id="result1" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>다중 for문을 이용해서 1~ 10 까지 중   
+      i와 k의 더한 합이 3의 배수일 때만 출력 continue를 이용</h3>
+   
+   <input type="button" value="확인" onclick="proc2()">
+   <br><br>
+   <div id="result2" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>1~100 까지 중 2의 배수이면서 3의 배수인 것만 출력</h3>
+   
+   <input type="button" value="확인" onclick="proc3()">
+   <br><br>
+   <div id="result3" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>두 수를 입력(prompt) 두수의 합이 100이상일이때만 출력 
+   (continue를 이용 , 두수 모두 0 이 입력되면 종료)</h3>
+   
+   <input type="button" value="확인" onclick="proc4()">
+   <br><br>
+   <div id="result4" class="result"></div>
+</div>
+
+</body>
+</html>

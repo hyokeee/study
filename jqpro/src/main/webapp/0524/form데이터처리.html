@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+$(function(){
+	$('#postbtn').on('click',function(){
+		
+		//입력한 값 가져오기 - val();
+		let vname = $('#pname').val();
+		let vage  = $('#page').val();
+		
+		$.post(
+				'./form데이터.jsp',
+				{ "name": vname, "age" : vage },
+				function(res,a,b){	
+					code = "<p> 이름 : " + res.name + "</p>";
+					code += "<p> 나이 : " + res.age + "</p>";
+					
+					$('.postres').html(code)		
+				},
+				'json'
+		)
+		
+		/* 
+		$.ajax({
+			
+			url : './form데이터.jsp',
+			//data : "name=" + vname + "&age=" + vage,	//일반문자열
+			data : { "name": vname, "age" : vage },		//json형식
+			type : 'post',
+			success : function(res,a,b){		//res는 위에 url: 에서 실행한 결과가 담긴다		
+				code = "<p> 이름 : " + res.name + "</p>";
+				code += "<p> 나이 : " + res.age + "</p>";
+				
+				$('.postres').html(code)
+				
+			},
+			error : function(xhr,x,y){
+				alert("상태 : " + xhr.status) ;
+			},
+			dataType : 'json'			//dataType은 결과 타입이다.
+
+		})	
+		*/
+		
+	})//click
+})//function
+</script>
+</head>
+<body>
+
+<div class="box">
+	<h3>비동기방식처리 post</h3>
+   
+    <div id="result4" class="result">
+		<form>
+            <label for="name">이름</label>
+            <input name="name" id="pname">
+
+            <label for="age">나이</label>
+            <input name="age" id="page">
+            <br>
+            <input type="button" value="전송" id="postbtn">
+        </form>
+    </div><!-- result -->
+    <div class="postres">
+    
+    </div> <!-- 결과 출력 -->
+</div><!-- box -->
+</body>
+</html>

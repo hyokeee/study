@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/mystyle.css">
+<title>Insert title here</title>
+<script>
+function proc1(){
+	
+	sum=0;
+	substr = " ";
+	while(true){
+		//입력
+		let i = parseInt(prompt("입력하세요"));
+		//입력한 값을 누적
+		sum += i;
+		substr += i+ " ";
+		//계속할래? - true/false
+		cont = confirm("계속할래?");
+		if(!cont){
+			break;
+		}
+	}
+	//출력 양식
+	result = "입력된 값들" + substr + "<br>";
+	result += "누적된 값" + sum;
+	
+	//출력
+	document.getElementById("result1").innerHTML = result;
+}
+
+/* function proc2(){
+	str = "";
+	gugures = "";
+	while(true){
+		
+		//구구단 수를 입력 5
+		let su = parseInt(prompt("단을 입력하세요"));
+		//1~9
+		for(let i=1; i<10; i++){
+			res = i * su;
+			gugures += `${su} X ${i} = ${res} <br>`; 
+		}
+		
+		//출력 내용
+		str += "<br>*******"+su+"단*******<br>" ;
+		str += gugures;
+		document.getElementById("result2").innerHTML = str;
+		
+		//gugures를 비워준다
+		gugures = "";
+		
+		
+		//계속할래? - true/false
+		cont = confirm("계속할래?");
+		if(!cont){
+			break;
+		}
+	}
+} */
+
+
+function proc2(){
+	   str = ""; 
+	   while(true){
+	      // 구구단 수를 입력
+	      gu = prompt("입력하세요");
+	      
+	      //출력 내용
+	      str += "****"+gu+"단******<br>";
+	      gugures="";
+	      
+	      // 1~9
+	      for(i=1; i<10;i++){
+	         // 5 *1 =5 (식이 누적)
+	         gugures += `${gu}*${i}=${gu*i}<br>`;
+	      }
+	      //출력 내용
+	      str += gugures+"<br>"; 
+	      
+	      // 계속할지 확인 여부
+	      cont = confirm("계속할래??");
+	      if(!cont) break;
+	   }
+	      //출력
+	      vresult2=document.getElementById("result2").innerHTML =str;
+}
+
+</script>
+</head>
+<body>
+<div class = "box">
+   <h3>사용자가 입력한 값을 계속 더하고, 누적된 값을 출력<br>
+   계속 입력 여부를 물어본다 (confirm)</h3>
+   
+   <input type="button" value="확인" onclick="proc1()">
+   <br><br>
+   <div id="result1" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>입력한 수의 구구단을 출력<br>
+   계속 입력여부를 물어본다(confirm)</h3>
+   
+   
+   <input type="button" value="확인" onclick="proc2()">
+   <br><br>
+   <div id="result2" class="result"></div>
+</div>
+
+</body>
+</html>

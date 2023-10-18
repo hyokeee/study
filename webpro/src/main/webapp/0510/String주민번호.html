@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+     
+    proc1 = () => {
+        //입력
+        jno = prompt("주민번호를 입력하세요");
+        //각 자리별로 자르기
+        jyear = jno.substring(0,2);
+        month = jno.substring(2,4);
+        day = jno.substring(4,6);
+       
+        //성별 비교
+        jgender = jno.substring(7,8);
+        gender = "";
+        switch(jgender){
+            case "1": case "3":
+                gender = "남자";
+                break;
+            case "2": case "4":
+                gender = "여자";
+                break;
+        }
+        //년도 2000/1900인지 비교
+        year = "";
+        switch(jgender){
+            case "1": case "2":
+                year = "19"+jyear;
+                break;
+            case "3": case "4":
+            year = "20"+jyear;
+            break;
+        }        
+        //나이 계산
+        today = new Date().getTime();
+        birthday = new Date(year+"-"+month+"-"+day).getTime();
+
+        timegap = today - birthday;
+        yeargap = timegap / 1000 / 60 / 60 / 24 / 365;
+        
+        age = parseInt(yeargap); 
+
+        //출력 내용
+        //주민번호 : 
+        no = jno.replace(jno.substring(8),"******");
+        str = `주민번호 : ${no} <br>`;
+        //생년월일 : 
+        str += `생년월일 : ${year}년 ${month}월 ${day}일 <br>`;
+        //성별 : 
+        str += `성별 : ${gender}<br>`;
+        //나이 : 
+        str += `나이 : ${age}세`;
+
+        document.getElementById("result1").innerHTML = str;
+    }
+    
+   /*
+    //쌤 풀이
+     proc1 = () => {
+        //입력   
+        input = prompt("주민번호를 입력하세요");
+        
+        //각자리별로 자르기 110721-4******
+        yy = input.substr(0,2);
+        mm = input.substr(2,2);
+        dd = input.substr(4,2);
+        gg = input.substr(7,1);
+        
+        //성별비교
+        if(gg=="3" || gg=="1"){
+            gender = "남자";
+        }else if(gg=="2" || gg=="4"){
+            gender = "여자"
+        }
+
+        //년도 2000/1900인지 비교
+        if(gg =="1"||gg=="2"){
+            year = "19" + yy;
+        } else if(gg=="2"||gg=="4"){
+            year = "20" + yy;
+        }
+
+        //나이계산
+        today = new Date();
+        toyear = today.getFullYear();
+        age = toyear - parseInt(year);
+        //출력내용
+        code = input.substr(0,8);
+        str = `주민번호 :  ${code}****** <br>`;
+        str += `생년월일 : ${year}년 ${mm}월 ${dd}일 <br>`;
+        str += `성별 : ${gender}<br>`;
+        str += `나이 : ${age}세 <br>`;
+
+        document.getElementById("result1").innerHTML = str;
+     }
+   */
+
+    proc2 =()=>{
+        multi = "234567892345"
+
+        //입력
+        input = prompt("입력하세요");
+        incode = input.replace("-","");
+        sum = 0;
+        for(i=0; i<multi.length; i++){
+            sum += multi.substr(i,1) * incode.substr(i,1);
+        }
+
+        result = 11-(sum%11);
+       
+        //값 비교
+        if(result == 10) result = 0;
+
+        if(result == 11) result = 1;
+
+        //M자리 값과 비교
+        iscorrect = "";
+        m = parseInt(incode.substr(12,1));
+        if(result==m){
+            iscorrect = "맞는 주민번호입니다."
+        } else{
+            iscorrect = "틀린 주민번호입니다."
+        }
+        
+        //출력
+        str = `주민번호 :  ${input.substr(0,8)}******는 <br>`;
+        str +=`계산 값 : ${result} <br>`;
+        str += `주민번호 마지막자리 값 : ${m}<br>`;
+        str += `${iscorrect}`;
+
+        document.getElementById("result2").innerHTML = str;
+    }
+</script>
+</head>
+<body>
+
+<div class="box">
+<h3>prompt로 주민등록번호를 입력 받아 생년월일과 성별, 나이를 출력하는 프로그램을 작성하시오.
+</h3>
+<p>예 주민등록번호를 110326-4432618로 입력 받은 경우<br>
+    생일 : 2011년 3월 26일<br>
+    성별 : 여자  <br>
+    나이 : 12<br></p>
+<input type="button" value="확인" onclick="proc1()">
+<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>주민등록번호를 입력 받아 주민등록번호의 유효성을 검사하는 프로그램을 작성하시오.(ABCDEF-GHIJKLM)
+    </h3>
+    <p> A*2 + B*3 + ... + H*9 + I*2 + ... + L*5 의 총합을 구한다.<br>
+        1번의 합을 11로 나눈 나머지를 구한다.<br>
+        11에서 2번의 결과를 뺀다.<br>
+        3번의 결과가 0~9이면 값 그대로, 10이면 0, 11이면 1로 변환<br>
+        4번의 결과와 M자리의 값이 같으면 맞는 번호이다.<br>
+    </p>
+    <input type="button" value="확인" onclick="proc2()">
+    <div id="result2" class="result">
+    </div>
+</div>
+</body>
+</html>

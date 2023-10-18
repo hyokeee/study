@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+    img{
+        width : 100px;
+        height : 100px;
+    }
+
+</style>
+<script>
+arr=["Hello", "Happy", "즐거운 주말", "맛있는 점심","javascript"];
+
+proc1 = () => {
+
+    // 랜덤발생
+    rarr = arr[parseInt(Math.random()*arr.length)];
+    // arr[랜덤]문자열로 text객체 생성 - createTextNode()
+    rtext = document.createTextNode(rarr);
+    // p태그 객체 생성 - createElement('p')
+    ptag = document.createElement('p');
+    // p객체에 text객체를 추가 - appendChild()를 이용
+    ptag.appendChild(rtext);
+    // result1에 p객체를 추가 - 
+    //document.getElementById("result1").appendChild(ptag);
+    vres = document.getElementById("result1");
+    vres.appendChild(ptag);
+}
+
+proc2 = () => {
+    vchild = vres.lastChild;   //앞에서부터 = firstChild
+
+    vres.removeChild(vchild);
+}
+
+proc3 = () => {
+    //proc1과 독립적으로 시행되기 때문에 rarr가 전역 변수임에도 새로 만들어 주어야 한다.
+    rarr = arr[parseInt(Math.random()*arr.length)];
+    rtext = document.createTextNode(rarr);
+    ptag = document.createElement('p');
+    ptag.appendChild(rtext);
+
+    //button 객체를 생성
+    //<input type = "button" value ="삭제">
+    //<button type = "button"> 삭제 </button> <-- vbtn.innerText/innerHTML = "삭제"
+    vbtn = document.createElement("input");
+    vbtn.type = "button";
+    vbtn.value = " 삭제";
+    vbtn.onclick = function(){
+        this.parentNode.remove();
+    }
+    
+    
+    //p객체에 button객체를 추가
+    ptag.appendChild(vbtn);
+    
+    //p객체를 result3에 추가
+    document.querySelector("#result3").appendChild(ptag);
+}
+vimg = null;
+proc4 = (target) => {
+   //target : proc4(this) : this파라미터를 받은 지역변수,클릭한 버튼
+   target.style.display = "none";
+
+   //target변수를 전역변수에 다시 대입
+   gtarget = target;
+
+   vres4 = document.getElementById("result4");
+
+   if(vimg != null){
+    vimg[rnd].style.border = "none";
+   }
+   //1초마다 한번씩 
+   aid = setInterval(function () {
+      //첫번째 이미지를 선택한다
+      fimg = vres4.firstChild;
+      //result4의 맨 마지막으로 이동
+        vres4.appendChild(fimg);
+      //  vres4.removeChild(fimg);
+
+   },500);
+
+}
+
+proc5 = () => {
+    //종료 버튼 클릭
+    //시작 버튼을 다시 나타나게 해준다. - 전역변수 gtarget을 이용한다.
+    gtarget.style.display = "inline";  
+    
+    clearInterval(aid);
+    if(vimg != null){
+    vimg[rnd].style.border = "none";
+   }
+    //당첨항목을 설정
+    vimg = document.querySelectorAll("img");
+    
+    rnd = parseInt(Math.random()*vimg.length);
+
+    vimg[rnd].style.border = "5px double red";
+}
+
+
+</script>
+</head>
+
+<body>
+
+<div class="box">
+<h3>추가버튼 클릭 시 랜덤으로 문자열추가</h3>
+<h3>삭제버튼 클릭 시 아래 또는 위에서부터 차례대로 삭제</h3>
+<input type="button" value="추가" onclick="proc1()">
+<input type="button" value="삭제" onclick="proc2()">
+<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>추가버튼 클릭 시 랜덤으로 문자열추가,삭제버튼 추가</h3>
+    <h3>삭제버튼 클릭 시 해당 p태그 삭제</h3>
+    <input type="button" value="추가삭제" onclick="proc3()">
+    <div id="result3" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>시작버튼 클릭하면 첫 번째 이미지(index: 0)를 result4의 맨 뒤로 추가한다</h3>
+    <h3>첫 번째 이미지가  div box의 뒤로 추가될때  첫 번째 이미지는 삭제되어진다(이동의 의미) </h3>
+    <h3>1초마다 반복적으로 실행한다.<br>
+        시작버튼은 클릭하면 감췄다가 종료 버튼 클릭 시 다시 표시된다</h3>
+    <input type="button" value="시작"  onclick="proc4(this)">
+    <!--<input type="button" value="시작" id="start" onclick="proc4Id()"> !-->
+    <input type="button" value="종료" onclick="proc5()">
+    <div id="result4" class="result">
+        <img src="../images/가구2.jpg" alt="가구2.jpg">
+        <img src="../images/국화.jpg" alt="국화.jpg">
+        <img src="../images/딸기스무디.jpg" alt="딸기스무디.jpg">
+        <img src="../images/Koala.jpg" alt="가구2.jpg">
+        <img src="../images/spongebob.png" alt="spongebob.png">
+    </div>
+</div>
+</body>
+</html>

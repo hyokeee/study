@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src ="../js/jquery-3.7.0.min.js"></script>
+<style>
+h1{
+    background : none;
+}
+.box .result{
+    font-size: 1.0rem;
+}
+
+</style>
+<script>
+proc1 = (target) => {
+    //target : 클릭한 h1객체 this를 파라미터로 받은 지역 변수
+
+    target.style.display = "none";
+}
+
+//$(document).ready(function(){})
+window.onload = function(){
+    vres2 = document.getElementById("result2");
+    vh1 = vres2.getElementsByTagName("h1");
+    for(i=0; i<vh1.length; i++){
+        vh1[i].addEventListener("click",proc2)
+    }
+
+    //result3의 h1을 클릭하면 - jquery
+    $("#result3 h1").on("click",function(){
+
+        //this.style.display = "none";       스크립트방식
+       // $(this).css("display","none");     //jquery  방식
+        $(this).hide();                   //jquery함수
+    })
+}
+
+function proc2(){
+    this.style.display = "none";
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+<h3>h1 의 클릭이벤트 </h3>
+&lt;h1 onclick="proc1(this)">클릭하면 사라집니다1&lt;/h1>
+
+<div id="result1" class="result">
+    <h1 onclick="proc1(this)">클릭하면 사라집니다1</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다2</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다3</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다4</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다5</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다6</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다7</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다8</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다9</h1>
+    <h1 onclick="proc1(this)">클릭하면 사라집니다10</h1>
+</div>
+</div>
+
+<div class="box">
+    <h3>h1 의 클릭이벤트 </h3>
+    <h3>script에서 일괄 이벤트 등록 </h3>
+    .addEventListener('click',함수이름)
+    <div id="result2" class="result">
+        <h1>클릭하면 사라집니다1</h1>
+        <h1>클릭하면 사라집니다2</h1>
+        <h1>클릭하면 사라집니다3</h1>
+        <h1>클릭하면 사라집니다4</h1>
+        <h1>클릭하면 사라집니다5</h1>
+        <h1>클릭하면 사라집니다6</h1>
+        <h1>클릭하면 사라집니다7</h1>
+        <h1>클릭하면 사라집니다8</h1>
+        <h1>클릭하면 사라집니다9</h1>
+        <h1>클릭하면 사라집니다10</h1>
+    </div>
+</div>
+
+<div class="box">
+    <h3>h1 의 클릭이벤트 </h3>
+    <h3>script에서 jquery방식으로 이벤트 설정</h3>
+    $('h1').on('click',function()){ }
+    <div id="result3" class="result">
+        <h1>클릭하면 사라집니다1</h1>
+        <h1>클릭하면 사라집니다2</h1>
+        <h1>클릭하면 사라집니다3</h1>
+        <h1>클릭하면 사라집니다4</h1>
+        <h1>클릭하면 사라집니다5</h1>
+        <h1>클릭하면 사라집니다6</h1>
+        <h1>클릭하면 사라집니다7</h1>
+        <h1>클릭하면 사라집니다8</h1>
+        <h1>클릭하면 사라집니다9</h1>
+        <h1>클릭하면 사라집니다10</h1>
+    </div>
+</div>
+</body>
+</html>

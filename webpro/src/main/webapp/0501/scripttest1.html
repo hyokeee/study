@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+div {
+	border : 1px solid blue;
+	padding : 10px;
+}
+</style>
+</head>
+<body>
+
+	<div></div>
+
+<script>
+	let today = new Date();
+	
+	//window.alert(today);
+	//document.write(today);
+	console.log(today);
+	
+	//div요소를 검색 후 출력
+	document.getElementsByTagName("div")[0].innerText = today;
+	document.querySelector("div").innerText = today;
+</script>
+
+</body>
+</html>

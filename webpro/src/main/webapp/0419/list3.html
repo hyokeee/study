@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title>list3</title>
+		<style>
+			ul{
+				list-style-position : inside;
+			}
+			ul#cir{
+				list-style-type : circle;
+			}
+			ul#squ{
+				list-style-type : square;
+			}
+			#limg{
+				/* list-style-image : url(../images/check.png); */
+				list-style : circle inside url(../images/check.png);
+			}
+			
+			
+			
+			ul,ol{
+				border : 1px solid red;
+				width : 150px;
+				margin : 5px;
+				height : 170px;
+			}
+			
+			li{
+				border : 1px dotted #00ff00;
+			}
+			
+			hr{
+				
+			}
+			
+			ol#alpal{
+				list-style-type : lower-alpha;
+			}
+			
+			ol#hang{
+				list-style-type : hangul;
+			}
+			
+			pre{
+				background: #f1a5d2;
+				font-size : 20px;
+				/*border-top : 5px double pink;
+				border-bottom : 5px double pink;
+				*/
+				border : 10px inset blue;
+				border-left : none;
+				border-right : none;
+				margin : 30px;
+			}
+			
+			div{
+			border : 3px solid green;
+			display : flex;
+			flex-direction : rows;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+<pre>
+블럭요소를 옆으로 배치
+display : flex
+flex-direction : column
+옆으로 배치 하려고 하는 요소의 부모요소가 필요하다.
+</pre>
+		<div>
+		<ul>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ul>
+		
+		
+		<ul id="cir">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ul>
+		
+		
+		<ul id="squ">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ul>
+		
+		
+		<ul id="limg">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ul>
+		</div>
+		
+		<hr color="blue">
+		<div>
+		<ol>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ol>
+		
+		
+		<ol id="alpal">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ol>
+		
+		<ol id="hang">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ol>
+		</div>
+
+	</body>
+
+</html>

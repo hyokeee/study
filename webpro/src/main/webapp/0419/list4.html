@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list1</title>
+<style>
+ul#cir {
+	list-style-type: circle;
+}
+
+ul#squ {
+	list-style-type: square;
+}
+
+#limg {
+	list-style-image: url(../images/check.png);
+}
+
+ul {
+	border: 1px solid red;
+	width: 150px;
+	margin: 5px;
+}
+
+li {
+	border: 1px dotted #00ff00;
+	margin: 2px;
+}
+
+div {
+	border: 5px solid crimson;
+	display: flex;
+	flex: rows;
+}
+
+img {
+	width: 50px;
+	height: 70px;
+}
+</style>
+</head>
+
+<body>
+	<div>
+		<ul>
+			<li><a href="https://www.naver.com/" target="_self">네이버</a></li>
+			<li><a href="https://www.nate.com/" target="_blank">네이트</a></li>
+			<li><a href="https://www.daum.net/">다음</a></li>
+			<li><a href="https://www.w3schools.com/">w3school</a></li>
+			<li><a href="https://www.w3.org/">w3c</a></li>
+		</ul>
+
+
+		<ul id="cir">
+			<li><img src="http://localhost/webpro/images/coffee1.jpg"
+				alt="커피"></li>
+			<li><img src="../images/딸기스무디.jpg" alt="커피"></li>
+			<li><img src="../images/아메리카노.jpg" alt="커피"></li>
+			<li><img src="../images/에스프레소.jpg" alt="커피"></li>
+			<li><img src="../images/카페라떼.jpg" alt="커피"></li>
+		</ul>
+
+
+		<ul id="squ">
+			<li>
+				<a href="https://www.naver.com/" target="_self">
+					<img src="../images/coffee1.jpg" alt="커피">
+				</a>
+			</li>
+			<li><a href="https://www.nate.com/" target="_blank"><img
+					src="../images/딸기스무디.jpg" alt="커피"></a></li>
+			<li><a href="https://www.daum.net/"><img
+					src="../images/아메리카노.jpg" alt="커피"></a></li>
+			<li><a href="https://www.w3schools.com/"><img
+					src="../images/에스프레소.jpg" alt="커피"></a></li>
+			<li><a href="https://www.w3.org/"><img
+					src="../images/카페라떼.jpg" alt="커피"></a></li>
+		</ul>
+
+
+		<ul id="limg">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JAVASCRIPT</li>
+			<li>JQUERY</li>
+			<li>AJAX</li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

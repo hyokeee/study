@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+label{
+	display : inline-block;
+	width : 80px;
+	height : 30px;
+}
+
+form{
+	width : 50%;
+	border : 1px solid blue;
+	padding : 20px;
+	background-color : yellow;
+}
+
+fieldset{
+	width : 80%;
+	margin : 5px auto;
+}
+
+div{
+	width : 50%;
+	height : 50px;
+	border : 1px solid orange;
+}
+
+span{
+	background : lightblue;
+}
+
+</style>
+<script>
+function changeColor(){
+	//id=col인 요소로 접근 해서 선택 값을 가져온다
+	
+	colvalue = document.getElementById('col').value;
+	colvalue = document.querySelector('#col').value;
+	//colvalue = document.querySelector('input').value;
+	console.log(colvalue);
+	
+	//span태그를 검색, id=scolor 요소를 검색
+	//검색된 요소에 선택한 색상값을 출력.
+	document.querySelector('#scolor').innerHTML = colvalue;
+	
+	
+	
+	//선택한 값으로 form 태그에 출력 - form의 색상을 변경한다.(background) ==> style 변경
+	//form 요소를 검색
+	//vform = document.getElementsByTagName('form');
+	//vform[0].style.backgroundColor = colvalue;
+	
+	vform = document.querySelector('form');
+	vform.style.backgroundColor = colvalue;
+
+}
+
+</script>
+</head>
+<body>
+<div>
+	<input type="color" id="col" onchange="changeColor()">
+	<span id="scolor">결과</span>
+</div>
+	<form>
+	
+	
+	<fieldset>
+		<legend>기본사항</legend>
+		
+		<label for="id">아이디</label>
+		 <input type="text" name="id" id="id">
+		 <br>
+		 
+		<label for="pw">비밀번호</label>
+		 <input type="password" name="pw" id="pw">
+		 <br>
+		 
+		<label for="bir">생일</label>
+		 <input type="date" name="bir" id="bir">
+		 <br>
+	</fieldset>
+	
+	
+	<fieldset>
+		<legend>경력사항</legend>
+		
+		<label>1차</label>
+		<input type="text">
+		<textarea rows="3" cols="50"></textarea>
+	
+	
+	</fieldset>
+	
+	</form>
+
+
+
+
+
+</body>
+</html>

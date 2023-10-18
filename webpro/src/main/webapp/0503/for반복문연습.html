@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/mystyle.css">
+<title>Insert title here</title>
+
+<script>
+proc1 = () => {
+	vtable = "<table border='1'>";
+	for(let i=1; i<10; i++){
+		vtable += "<tr>";
+		for(let k=1; k<10; k++){
+			vtable += "<td>" + i + " X " + k + "<br>" +i*k +"</td>";
+		}
+		vtable += "</tr>";
+	}
+	
+	vtable += "</table>";
+	
+	//result1에 vtable 출력
+	document.getElementById("result1").innerHTML = vtable;
+}
+
+proc2 = () => {
+	//객체 선언
+	myCar = { make: "BMW", model: "X5", year: 2013 };
+	
+	console.log(myCar.make,myCar.model,myCar.year);
+	
+	
+	/* str = "자동차 회사 : " + myCar.make + "<br>";
+	str += "자동차 모델 : " + myCar.model + "<br>";
+	str += "자동차 연식 : " + myCar.year;
+    document.getElementById("result2").innerHTML = str; */
+    
+    
+	let txt = "";
+    for (let x in myCar) {
+    /* 	txt += "myCar[" + x + "] : " + myCar[x] + " <br>"; */
+    	txt +=`myCar[${x}] : ${myCar[x]} <br>`;
+    }
+    document.getElementById("result2").innerHTML = txt;
+}
+
+proc3 = () => {
+	let sum = 0;
+	//방법1 ==> i를 2씩 증가시킨다.
+	/* for(let i=0; i<=200; i+=2){
+		sum += i;
+	} */
+	
+	//방법2 ==> if 조건문을 사용한다
+ 	for(let i=0; i<=200; i++){
+		if(i%2!=0){
+			continue;
+		} 
+			sum+=i
+	} 
+	
+	//방법3 ==> 2*i를 사용해 구한다
+	/* for(let i=0; i<=100; i++){
+		sum+= 2 * i;
+	} */
+	vresult = document.getElementById("result3");
+	vresult.innerHTML = "1~200까지 짝수의 합 : " + sum;
+	
+}
+</script>
+
+<style>
+table{
+	border : 1px solid hotpink;
+	/*border-collapse: collapse;*/
+	border-spacing: 20px;
+}
+td{
+	width : 60px;
+	height : 60px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<div class = "box">
+   <h3>다중 for문을 이용</h3>
+   <h3>구구단 테이블 출력</h3>
+   
+   <input type="button" value="확인" onclick="proc1()">
+   <br><br>
+   <div id="result1" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>for ~in 문을 이용</h3>
+   <h3>객체의 열거할 수 있는 속성 이름을 지정 변수에 대입</h3>
+   <input type="button" value="확인" onclick="proc2()">
+   <br><br>
+   <div id="result2" class="result"></div>
+</div>
+
+<div class = "box">
+   <h3>1~200까지 짝수의 합</h3>
+   <h3></h3>
+   <input type="button" value="확인" onclick="proc3()">
+   <br><br>
+   <div id="result3" class="result"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="납품.jsp" method="post">
+<fieldset>
+	<legend>납품자 정보</legend>
+	<ol>
+		<li>
+			<label for="name">납품자명:</label>
+			<input type="text" name="name">
+		</li>
+		<li>
+			<label for="mail">email:</label>
+			<input type="text" name="mail" placeholder="answer@naver.com">
+		</li>
+		<li>
+			<label for="home">홈페이지:</label>
+			<input type="text" name="home" value="http://">
+		</li>
+		<li>
+			<label for="loc">지역:</label>
+			<select name="loc">
+				<option selected>부산</option>
+				<option>서울</option>
+				<option>대전</option>
+				<option>대구</option>
+				<option>제주</option>
+			</select>
+		</li>
+	</ol>
+</fieldset>
+<fieldset>
+	<legend>납품 정보</legend>
+	<ul>
+		<li>
+			<label for="pname">상품명 :</label>
+			<input type="text" name ="pname">
+		</li>
+		<li>
+			<label for="qty">납품수량 :</label>
+			<input type="text" name ="qty" placeholder="최소 100">
+		</li>
+		<li>
+			<label for="grade">납품등급 :</label>
+			<input type="range" name ="grade">
+		</li>
+		<li>
+			<label for="etc">기타사항 :</label>
+			<textarea rows="5" cols="30" name="etc"></textarea>
+		</li>
+	</ul>
+</fieldset>
+<br>
+<button type="submit">send message</button>
+
+
+</form>
+</body>
+</html>

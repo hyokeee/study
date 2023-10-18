@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#btn1').on('click',function(){
+            //$('#result1 form :input')
+            //form안에 있는 모든 것들 중 가능한 것(:enabled는 필터 역할임==> 붙여쓴다)
+            $('#result1 form *:enabled').css('border','5px solid red');
+            $('#result1 form *:disabled').css('border','5px solid green');
+
+            //속성의 상태 변경 
+            // 사용 불가능으로 변경 prop('disabled',true);
+            // 사용 가능으로 변경 prop('disabled',flase); <==enabled true가 아님 !
+            
+
+        })
+
+    })
+</script>
+</head>
+<body>
+
+<div class="box">
+    <h3>폼상태필터</h3>
+    <h3>사용불가능 = :disabled</h3>
+    <h3>사용가능 = :enabled</h3>
+    <input type="button" value="확인" id="btn1">
+    <br><br>
+    <div id="result1" class="result">
+        <form> 
+        <input type="text" name="id" ><br>
+        <input type="password" name="pass"  ><br>
+
+        <select name="disSelect" disabled>
+            <option>Option1</option>
+            <option>Option2</option>
+            <option>Option3</option>
+            <option>Option4</option>
+        </select>
+        <br>
+        <textarea name="enTextarea" rows=10 cols=20 >text</textarea><br>
+        <input type="button" value="확인"  onclick="alert('hello!!')" disabled> <br>
+
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+$(function(){
+    //전송을 위한 객체 생성
+    let xhr = new XMLHttpRequest();
+    //$(documnet).on('click','#text',function(){  })    //delegate형식
+    $('#text').on('click',function(){                   //bind형식
+
+        //전송
+        xhr.open("GET",'text.jsp',true);             //get or post 지정
+        xhr.send();
+        //응답
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                res = this.responseText;
+               //res = 홍길동/개나리/진달래/무궁화/삼천리/금수강산 (문자열)
+                names = res.split("/");		//names배열생성             
+                
+                code = "<ul>"
+                //$(name).each(function(){})  반복문
+                $.each(names,function(i){
+                	code+="<li>" + names[i] + "</li>"
+                })
+                
+                code += "</ul>";
+                
+                $('#result1').html(code);            
+            }
+        }
+    })
+    
+    $('#arr').on('click',function(){
+    	
+    	//입력한 값들을 가져온다 - val()
+    	
+    	
+    	//응답
+    	xhr.onreadystatechange = function(){
+    		if(this.readyState == 4 && this.status == 200){
+    			
+    			res = this.responseText;
+    			rjson = JSON.parse(res);	//JSON 으로 변환  
+    			//res = [ "진달래","무궁화","수선화","라일락","들국화","백장미" ] (배열)
+    			
+    			code = "<ol>"
+    			$.each(rjson,function(i){
+    				code+="<li>" + rjson[i] + "</li>"
+    			})
+    			code += "</ol>"
+    			
+    			$('#result2').html(code);
+    		} //if
+    		
+    	}//onreadystatechange
+    	
+	    	//전송
+	        xhr.open("GET",'arr.jsp',true);             //get or post 지정
+	        xhr.send();
+    	
+    })
+    
+    $('#jobj').on('click',function(){
+    	
+    	//입력한 값들을 가져온다 - val()
+    	
+    	//전송
+        xhr.open("GET",'jsonObj.jsp',true);             //get or post 지정
+        xhr.send();
+        
+      	//응답
+    	xhr.onreadystatechange = function(){
+    		if(this.readyState == 4 && this.status == 200){
+    			
+    			res = JSON.parse(this.responseText);
+    			
+    			code = `<p>아이디 : ${res.id} </p>
+    					<p>이름 : ${res.name} </p>
+    					<p>전화번호 : ${res.tel} </p>
+    					<p>주소 : ${res.addr} </p>
+    					`
+    			
+    			$('#result3').html(code);
+    			
+    		} //if
+    		
+    	}//onreadystatechange
+    	
+    })
+    
+    $('#jobjarr').on('click',function(){
+    	
+		//입력한 값들을 가져온다 - val()
+    	
+    	//전송
+        xhr.open("GET",'objarr.jsp',true);             //get or post 지정
+        xhr.send();
+        
+      	//응답
+    	xhr.onreadystatechange = function(){
+    		if(this.readyState == 4 && this.status == 200){
+    			res = JSON.parse(this.responseText);   			
+    			code ="";
+        		/* $.each(res,function(i){
+        			code += `${i+1}번째 회원 자료<br>
+      					<p>아이디 : ${res[i].id} </p>
+      					<p>이름 : ${res[i].name} </p>
+      					<p>전화번호 : ${res[i].tel} </p>
+      					<p>주소 : ${res[i].addr} </p><br>`
+        		}) */
+        		$.each(res,function(i,v){
+        			code += `
+	        				****${i+1}번째 회원정보****<br>
+	      					<p>아이디 : ${v.id} </p>
+	      					<p>이름 : ${v.name} </p>
+	      					<p>전화번호 : ${v.tel} </p>
+	      					<p>주소 : ${v.addr} </p><br>
+	      					`
+        		})  //$.each
+        			
+        		$('#result4').html(code);
+
+    		}  //if
+      	}  //onreadystatechange	
+    })  // click
+
+})
+
+</script>
+<style>
+    .dflex{
+        display : flex;
+    }
+    .dflex .result{
+        flex : 25%;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <input type="button" value="text" id="text" >
+    <input type="button" value="jason배열" id="arr">
+    <input type="button" value="json객체" id="jobj">
+    <input type="button" value="json객체배열" id="jobjarr">
+    <div class="dflex">
+        <div id="result1" class="result"> </div>
+        <div id="result2" class="result"> </div>
+        <div id="result3" class="result"> </div>
+        <div id="result4" class="result"> </div>
+    </div>
+</div>
+</body>
+</html>

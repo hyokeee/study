@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+header, aside,section,footer{
+	box-sizing: border-box;
+	border-radius: 10px;
+	margin:2px;
+}
+
+header, footer{
+	height : 200px;
+	background :  #ffd700;
+	padding-top : 10px;
+}
+
+footer{
+	height : 100px;
+}
+header h1{
+	margin-top : 50px;
+}
+header h1, header p {
+	text-align: center;
+}
+
+aside{
+	width: calc(35% - 10px);
+	height : 500px;
+	background: #FF88A7;
+	padding : 20px;
+	float: left;
+}
+
+aside a:link{
+	text-decoration: none;
+}
+img{
+	width : 95%;
+	height : 95%;
+}
+
+section{
+	width : calc(65% - 5px);
+	height : 500px;
+	background : #ACF3FF;
+	padding : 20px;
+	float : right;
+}
+
+section div{
+	width : 95%;
+	height : 38%;
+	margin : 5px auto;
+	padding : 5px;
+	border : 3px dotted yellow;
+	border-radius: 20px;
+	background : lightgreen;
+}
+
+section div h3{
+	width : 50%;
+	margin-left : 30px;
+}
+footer{
+	clear : both;
+}
+@media screen and (max-width : 600px){
+	aside, section{
+		width : 100%;
+	}
+}
+</style>
+</head>
+<body>
+	<header>
+		<h1>My Blog Page</h1>
+		<p>시멘틱 태그로 만들어진 페이지 입니다</p>
+	</header>
+
+	<aside>
+		<h3>Links</h3>
+		<ul>
+			<li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
+			<li><a href="https://www.naver.com/" target="_blank">Naver</a></li>
+			<li><a href="https://www.daum.net/" target="_blank">Daum</a></li>
+		</ul>
+		<figure>
+			<img alt="spongebob.png" src="../images/spongebob.png">
+			<figcaption>스폰지밥</figcaption>
+		</figure>
+	</aside>
+
+	<section>
+		<h2>여기는 section</h2>
+		<div>
+			<h3>semantic tags</h3>
+		</div>
+		<div>
+			<h3>div와 span</h3>
+		</div>
+	</section>
+</body>
+</html>

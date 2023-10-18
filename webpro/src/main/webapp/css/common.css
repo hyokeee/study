@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* 초기화 설정 */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li{list-style: none;}
+/* 이미지에 틈새를 들어오지 않게 하겠다는 태그 */
+img{border: 0;}
+body{
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* 전체레이아웃 */
+#topbg{
+  height: 60px;
+  background-color: #134e97;
+}
+#container{
+  margin: auto;
+  width: 1020px;
+  height: 750px;
+  padding: 10px;
+  /* height값은 임의로 줬다가 나중에 빼면됨 */
+  background-color: #fff;
+}
+
+/* 헤더 영역 */
+
+/* > 꺽쇠 바로 쓰면 바로 그안에 자식이 들어옴, >없으면(그냥 띄어쓰기) 그 중간에 다른 요소도 들어올 수 있음 */
+#topbg> header{
+  margin: auto;
+  width: 1020px;
+  height: inherit;
+  border: 2px solid orange;
+}
+
+/* 메인메뉴 영역 */
+#container #mainmenu{
+  /* 마진-밑에 쓸수록 적용됨 */
+  margin: auto;
+  margin-bottom: 10px;
+  width: 1000px;
+  height: 45px;
+  border-bottom:4px solid #666;
+}
+
+/* aside#leftmenu 띄어쓰기를 하지 않아야 하나의 요소로 인식 */
+#container aside#leftmenu{
+  float: left;
+  width: 170px;
+  height: 500px;
+  margin-right: 10px;
+  border: 1px solid red;
+}
+#container section#cont1{
+  float: left;
+  width: 820px;
+  height: 187px;
+  border: 1px solid blue;
+}
+#container section#cont2{
+  float: left;
+  width: 820px;
+  height: 130px;
+  border: 1px solid orange;
+}
+#container section#cont3{
+  float: left;
+  width: 820px;
+  height: 170px;
+  border: 1px solid green;
+}
+#container footer{
+  clear: both;
+  width: 1000px;
+  height: 130px;
+  border: 1px solid #444;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+    proc1 = () => {
+        vres = document.querySelector("#result1");
+
+           setTimeout(timeRun,500);
+      //  setTimeout(timeRun(),500);    //함수 호출형식 오류
+       //  setTimeout(function(){},500); //실행가능
+       //  setTimeout(()=>{},500);       //실행가능
+
+    } 
+
+    function timeRun(){
+        vres.style.backgroundColor = "pink";
+    }
+</script>
+</head>
+<body>
+
+<div class="box">
+<h3>setTimeout함수를 호출하여 result1인 요소에 배경색을  변경</h3>
+<input type="button" value="확인" onclick="proc1()">
+<div id="result1" class="result"></div>
+</div>
+</body>
+</html>

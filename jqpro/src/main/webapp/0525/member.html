@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<style>
+table{
+	border : 2px solid blue;
+}
+td{
+	width : 200px;
+	height : 50px;
+	text-align : center;
+}
+
+tr:first-child{
+	background : skyblue;
+}
+
+</style>
+<script>
+$(function(){
+	
+	$('#btn1').on('click',function(){
+		location.href = "./member.jsp";
+	})
+	
+	$('#btn2').on('click',function(){
+		
+		$.ajax({
+			url : './memberAjax.jsp',
+			type : 'get',
+			success : function(res){
+				code = `
+					<table border="1">
+						<tr>
+							<td>아이디</td>
+							<td>이름</td>
+							<td>전화번호</td>
+							<td>주소</td>
+						</tr>`;
+				$.each(res,function(i,v){
+					code += `
+						<tr>
+							<td>${res[i].id}</td>
+							<td>${res[i].name}</td>
+							<td>${res[i].tel}</td>
+							<td>${res[i].addr}</td>
+						</tr>`;
+				})
+				code+= `</table>`;
+				$('#result1').html(code);
+			},
+			error : function(xhr){
+				
+			},
+			dataType : 'json'
+
+		})
+	})
+})
+</script>
+</head>
+<body>
+<div class="box">
+	<input type="button" value="memberList" id="btn1">
+	<input type="button" value="memberListAjax" id="btn2">
+	<div id="result1" class="result"></div>
+</div>
+</body>
+</html>

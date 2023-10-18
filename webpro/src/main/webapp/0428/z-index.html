@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	width : 100px;
+	height : 100px;
+	border : 1px solid blue;
+	margin : 20px;
+	position : absolute;
+}
+
+.cd1{
+	background : skyblue;
+}
+
+.cd2{
+	background : lightgreen;
+}
+
+.cd3{
+	background : yellow;
+}
+
+.cd4{
+	background : hotpink;
+}
+
+#d1{
+	top : 100px;
+	left : 150px;
+}
+#d2{
+	top : 120px;
+	left : 170px;
+	z-index: 100;
+}
+#d3{
+	top : 140px;
+	left : 190px;
+	z-index: 101;
+}
+#d4{
+	top : 160px;
+	left : 210px;
+}
+hr{
+	position: absolute;
+	top : 310px;
+	left : 100px;
+}
+
+
+</style>
+</head>
+<body>
+<div id="d1" class="cd1">d1</div>
+<div id="d2" class="cd2">d2</div>
+<div id="d3" class="cd3">d3</div>
+<div id="d4" class="cd4">d4</div>
+<hr color="red">
+</body>
+</html>

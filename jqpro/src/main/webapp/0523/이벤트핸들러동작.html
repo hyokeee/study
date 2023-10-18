@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+    $(function(){
+        count = 0;
+        dcount = 0;
+        $('.btnAdd').on('click',function(){
+            // $('.btnAdd').click(function(){ })
+            // $('.btnAdd').on('click',function(){ })
+            rg = parseInt(Math.random()*256);
+            rr = parseInt(Math.random()*256);
+            rb = parseInt(Math.random()*256);
+            //새로운 버튼을 생성한다
+            newBtn = $(`<input type="button" value="새로운${++count}" class="btnAdd">`).css("background",`rgb(${rr},${rg},${rb})`);
+
+           
+            // result1에 첨부
+            $('#result1').append(newBtn);
+       
+        })
+
+            
+        
+         
+
+        //버튼 안눌림
+        $('.clear1').on('click', function(){
+            $('.btnAdd').off('click');
+        })
+    
+
+
+        //------------------------------------------------------------------//
+
+        //$(document).delegata('btnDeleg','click',function(){ })
+        $(document).on('click','.btnDeleg',function(){
+            
+            //새로운 버튼을 생성
+            let btn = $(`<input type="button" value="새로운${++dcount}" class="btnDeleg">`);
+
+             // result2에 첨부
+             $('#result2').append(btn);
+        })
+
+       
+        //버튼 안눌림
+        $('.clear2').on('click', function(){
+            $(document).off('click');      
+         })
+    })
+</script>
+</head>
+<body>
+
+<div class="box">
+    <h3>bind</h3>
+    <h3>실행전에 미리 구성되어 있는 요소에만 이벤트 핸들러가 실행된다</h3>
+    <h3>$(셀렉터).on(이벤트이름,핸들러){}</h3>
+    <input type="button" value="추가" class="btnAdd">
+    <input type="button" value="해제" class="clear1">
+    <div id="result1" class="result">
+    </div>
+</div>
+
+<div class="box">
+    <h3>delegate</h3>
+    <h3>실행전에 미리 구성되어 있는 요소와 새롭게 실행중에 동적으로 생성된 요소에도 
+        똑같은 이벤트 핸들러가 실행된다</h3>
+    <h3>$(document).on(이벤트이름,'셀렉터',핸들러){}</h3>
+    <input type="button" value="추가" class="btnDeleg">
+    <input type="button" value="해제" class="clear2">
+    <div id="result2" class="result">
+    </div>
+</div>
+</body>
+</html>

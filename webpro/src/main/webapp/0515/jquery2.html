@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<!--<script src = "../js/jquery-3.7.0.min.js"></script>!-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+/*  window.onload = function(){
+    $('#result1').css('background','yellow');
+} */
+ $(document).ready(function(){
+    //$('#result1').css('background','blue');
+    document.getElementById("result1").style.background = "red";
+
+    $("#btn1").on("click",function(){
+        $("#result2").css("background","green");
+      //  document.getElementById("result2").style.background = "magenta";
+
+    });
+
+    $("#btn3").on("click",function(){
+        
+      // result3 안의 h3을 검색
+     /*  vres3 = document.getElementById("result3");
+      vh3 = vres3.getElementsByTagName("h3");
+      for(i=0;i<vh3.length; i++){
+        vh3[i].style.color = "red";
+      } */
+
+      $("#result3 h3").css("color","blue");
+      $("#result3 h3").eq(2).css("color","red");
+
+    });
+}); 
+
+
+</script>
+</head>
+<body>
+
+<div class="box">
+<h3>확인 버튼 없이 실행시 즉시 실행</h3>
+<p>window.onload = function(){} <br>
+    $(document).ready(function(){})<br></p>
+<div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>
+        onclick 이벤트를 jquery에서 실행.
+    </h3>
+    <input type = "button" id="btn1" value="확인">
+    <div id="result2" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>
+        onclick 이벤트를 jquery에서 실행.
+    </h3>
+    <input type = "button" id="btn3" value="확인">
+    <div id="result3" class="result">
+        <h3>무궁화 꽃이 피었습니다</h3>
+        <h3>능소화 꽃이 피었습니다</h3>
+        <h3>장미 꽃이 피었습니다</h3>
+        <h3>라일락 꽃이 피었습니다</h3>
+        <h3> 꽃이 피었습니다</h3>
+    </div>
+</div>
+</body>
+</html>

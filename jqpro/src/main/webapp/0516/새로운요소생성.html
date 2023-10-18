@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<style>
+    img{
+        width : 100px;
+        height : 100px;
+    }
+</style>
+<script>
+$(document).ready(function(){
+    arr = ["뱅쇼.jpg","셔틀콕.jpg","수국.jpg","식품2.jpg","에스프레소.jpg",
+                    "영화2.jpg","펭귄.jpg"];
+    $("#btn3").on("click",function(){
+        rnd = parseInt(Math.random()*arr.length);
+        //새로운 이미지 태그를 생성
+        vimg = $("<img src='' alt='' onclick=''>");
+        vimg = $('<img>', {
+            'src' : '../images/' + arr[rnd],
+            'alt' : arr[rnd],
+            'click' : function(){
+                $(this).css('border','2px solid green');
+                //this.style.border = '2px solid green';
+            }
+        })
+
+        $("#result3").append(vimg);
+    })
+
+
+    $("#btn2").on("click",function(){
+        ptag = $('<p/>', {
+            'id' : 'p1',
+            'text' : 'Hello jQuery',
+            'click' : proc1
+            //'onclick' : 'proc1()'
+
+            //'click : function(){
+            //  alert("환영합니다");
+            // }'
+        })
+
+    //    $("#result2").append(ptag); <== appendChild형식
+       ptag.appendTo($("#result2"));
+    })
+
+    $("#btn1").on("click",function(){
+        /* --------------------------------------------------
+        ptag = document.createElement("p");
+        text = document.createTextNode("Hello jQuery");
+
+        ptag.appendChild(text);
+        ptag.id = "p1";
+        ptag.onclick = function(){
+            alert("환영합니다");
+        }
+
+        document.getElementById("result1").appendChild(ptag);
+        ------------------------------------------------------ */
+
+        ptag = $('<p id="p1" onclick="proc1()">Hello jQuery</p>');
+        ptag.appendTo($("#result1"));
+    })
+})
+
+function proc1(){
+    alert("환영합니다");
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <h3>새로운 요소를 생성</h3>
+    <h3>ptag = $('&lt;p id="p1" onclick="proc1()">Hello jQuery&lt;/p>');</h3>
+    <input type="button" value="확인" id="btn1">
+    <div id="result1" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>새로운 요소를 생성</h3>
+    <h3>ptag = $("
+        ",{속성들 또는 이벤트});</h3>
+    <h3>$("#result2").append(ptag)</h3>
+    <input type="button" value="확인" id="btn2">
+    <div id="result2" class="result"></div>
+</div>
+
+<div class="box">
+    <h3>새로운 요소를 생성</h3>
+    <h3></h3>
+    
+    <input type="button" value="이미지 추가" id="btn3">
+    <div id="result3" class="result"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+form {
+	border: 2px solid blue;
+	width: 30%;
+	height: 270px;
+	margin: auto;
+}
+
+label {
+	display: inline-block;
+	width: 60px;
+}
+
+textarea {
+	width: 160px;
+}
+
+h1 {
+	text-align: center;
+	width : 50%;
+	margin : auto;
+	
+}
+
+div {
+	padding: 20px;
+	margin : auto;
+}
+</style>
+
+
+</head>
+<body>
+	<h1 >회원가입 화면</h1>
+	<br>
+	<br>
+	<form action="home.jsp" method="post">
+		<div>
+			<label for="name">이름</label> 
+			<input type="text" name="name" id="name"required> 
+			<br> 
+			<label for="addr">주소</label> 
+			<input type="text" name="addr" id="addr" required>
+			<br>
+			<label for="mail">이메일</label>
+			<input type="text" name="mail" id="mail"
+				required pattern="[a-zA-Z]+[0-9]*@[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2}">
+			<br>
+			<label for="gender">성별</label>
+			<input type="radio" name="gender" id="gender" value="Male">Male
+			<input type="radio" name="gender" id="gender" value="Female">Female
+			<br>
+			<label for="area">내용</label>
+			<textarea name="area" id="area" rows="5" cols="20"></textarea>
+			<br>
+			<br>
+			<input type="submit">
+			<input type="reset">
+		</div>
+	</form>
+
+
+</body>
+</html>

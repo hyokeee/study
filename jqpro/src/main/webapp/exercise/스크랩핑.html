@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+const axios = require('axios');
+const cheerio = require('cheerio');
+
+const headers = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
+};
+
+axios.get('https://www.genie.co.kr/chart/top200?ditc=D&ymd=20200403&hh=23&rtm=N&pg=1', { headers })
+  .then(response => {
+    const data = response.data;
+    const $ = cheerio.load(data);
+    const trs = $('#body-content > div.newest-list > div > table > tbody > tr');
+
+    trs.each((index, element) => {
+      const title = $(element).find('td.info > a.title.ellipsis').text().trim();
+      const rank = $(element).find('td.number').text().substring(0, 2).trim();
+      const artist = $(element).find('td.info > a.artist.ellipsis').text().trim();
+      console.log(rank, title, artist);
+    });
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+</script>
+</head>
+<body>
+
+<div class="box">
+    <h3>스크랩핑</h3>
+    <input type="button" value="확인" onclick="proc1()">
+    <div id="result1" class="result">
+
+    </div>
+</div>
+</body>
+</html>

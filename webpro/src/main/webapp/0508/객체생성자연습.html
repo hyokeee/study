@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+/*
+ 1.생성자 함수를 이용한 객체를 정의한다
+함수이름은 Circle로 한다.
+속성 : rad를 정의(반지름)
+메소드 : getArea() 함수 정의 - 면적값을 리턴
+*/
+function Circle(radius){
+	this.radius = radius;
+	
+	this.getArea = function(){
+		return this.radius * this.radius * Math.PI;
+	}
+}
+//2.getCircum() 함수는 prototype에 추가한다.
+Circle.prototype.getCircum = function(){
+	return this.radius * 2 * Math.PI;
+}
+//3. Circle객체를 생성한다.
+//각 객체 속에 이름 속성을 추가한다.(prototype이 아니다.)
+//반지름 , 면적, 둘레를 출력한다. - 출력함수를 정의하여 호출
+function proc1(){
+	c1 = new Circle(3);
+	c1.name = "원1";
+	printCircle(c1,"result1");
+	
+	c2 = new Circle(5);
+	c2.name = "원2";
+	printCircle(c2,"result2");
+	
+	c3 = new Circle(7);
+	c3.name = "원3";
+	printCircle(c3,"result3");
+	
+	
+}
+function printCircle(c,result){
+	str = `반지름 : ${c.radius} <br>`;
+	str+= `면적 : ${c.getArea()} <br>`;
+	str+= `둘레 : ${c.getCircum()} <br>`;
+	str+= `이름 : ${c.name} <br>`;
+	str+= "------------------------------<br>"
+
+	document.getElementById(result).innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+  <div class="box">
+	<h3>객체의 속성과 메소드를 동적으로 추가</h3>
+	<h3>생성자 함수를 이용한 객체 선언</h3>
+	<h3>new를 이용하여 객체를 생성한다 c1 = new Circle(12);</h3>
+	<input type="button" onclick="proc1()" value="확인">
+	<div id="result1" class="result"></div>
+	<div id="result2" class="result"></div>
+	<div id="result3" class="result"></div>
+</div>
+</body>
+</html>

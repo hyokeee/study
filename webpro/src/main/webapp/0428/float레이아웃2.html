@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	box-sizing : border-box;
+	border-radius: 10px;
+	margin: 3px;
+}
+
+#header, #foot{
+	height: 50px;
+	background: orange;
+}
+
+#aside1, #aside2{
+	width : 20%;
+	height : 500px;
+	background : skyblue;
+}
+
+#content{
+	width : calc(60% - 1%);
+	height : 500px;
+	background : coral;
+}
+#ddd{
+display : flex;
+}
+
+</style>
+</head>
+<body>
+<div id="header">header</div>
+<div id="ddd">
+<div id="aside1">aside1</div>
+<div id="content">content</div>
+<div id="aside2">aside2</div>
+</div>
+<div id="foot">foot</div>
+</body>
+</html>

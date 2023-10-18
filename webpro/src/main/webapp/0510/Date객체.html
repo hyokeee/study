@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+
+today = new Date();
+
+function proc1(){
+	//myday = new Date("1999.01.12");
+	//myday = new Date(1999, 01-1, 12);
+	
+	myday = new Date(2020,0,8);
+	
+	//getTime()을 이용해서 millisec값 구하기
+	totime = today.getTime();
+	mytime = myday.getTime();
+	
+	console.log(totime,mytime);
+	
+	times = totime - mytime;
+	
+	years =times / 1000 / 60 / 60 / 24 / 365;
+	years = parseInt(years);
+	
+	str = `오늘 : ${today.toLocaleString()} <br>`;
+	//str += `나의 생일 : ${myday.toLocaleString()} <br>`;
+	str += `우리 만난 날 : ${myday.toLocaleString()}<br>`
+	str += `지금까지 ${years}년째 만나고 있습니다<br>`;
+	
+	document.getElementById("result1").innerHTML = str;
+}
+
+proc2 = () => {
+	//현재 날짜의 getTime --> millisec
+	totime = today.getTime();
+	
+	//100일에 대한 millisec
+	xdaytime = 100 * 1000 * 60 * 60 * 24;
+	
+	
+	//현재 날짜로부터 100일 후 날짜의 milisec
+	times = xdaytime + totime;
+	console.log(totime,xdaytime);
+	
+	//날짜로 변환하기
+	xdate = new Date(times);
+	
+	//출력
+	str = `오늘 : ${today.toLocaleDateString()}부터 <br>`;
+	str += `100일 후 : ${xdate.toLocaleDateString()}입니다.<br>`;
+	
+	document.getElementById("result2").innerHTML = str;
+	
+}
+/*
+//내 풀이
+proc3 = () => {
+	//현재 날짜의 getTime()
+	totime = today.getTime();
+	
+	//입력된 구입 날짜 받아오기
+	selvalue = document.getElementById("sel").value;
+
+	//해당 날짜로 date 객체 생성
+	buydate = new Date(selvalue);
+	//구입 날짜의 getTime();
+	buytime = buydate.getTime();
+	
+	//구입 날짜로부터 현재 날짜까지의 경과 millisec
+	time = totime - buytime;
+	
+	//milisec을 일자로 변경
+	day = time / 1000 / 60 / 60 / 24;
+	day = parseInt(day);
+	
+	//비교
+	str = `오늘 날짜: ${today.toLocaleDateString()}<br>`;
+	str += `구입 날짜 : ${buydate.toLocaleDateString()}<br>`
+	str += `구입일로부터 ${day}일 지났습니다.<br>`
+	if(day >7) str += "교환 불가능";
+	
+	if(day<=7) str += "교환 가능";
+	
+	if(day<0) str += "구입일자를 다시 선택해주세요."
+	
+	document.getElementById("result3").innerHTML = str;
+	
+}
+*/
+
+proc3 = () => {
+	//id=sel인 요소로 접근(검색) - 선택한 날을 가져온다 - value - 결과값을 String
+	selvalue = document.getElementById("sel").value;
+	
+	//selvalue변수로 Date객체를 생성한다.
+	selday = new Date(selvalue);
+	
+	//오늘과 선탟한 날의 간격을 구한다
+	//오늘의 getTime() - 선택한 날의 getTime() //총 millisec값을 구한다
+	times = today.getTime() - selday.getTime();
+	//총 millisec값을 가지고 /1000/60/60/24 ==> 몇 일의 결과값을 얻었다
+	days= parseInt(times/1000/60/60/24);
+	
+	
+	//비교 7일이 경과 ??
+	if(days > 7){
+		res = "교환/환불 불가능";
+	} else {
+		res = "교환/환불 가능";
+	}
+	
+	//출력
+	str = `구입일 : ${selday.toLocaleDateString()}<br>`;
+	str += `현재일 : ${today.toLocaleDateString()}<br>`;
+	str += `경과 일 수 : ${days}일<br>`;
+	str += res;
+	
+	document.getElementById("result3").innerHTML = str;
+}
+ 
+
+</script>
+</head>
+<body>
+  <div class="box">
+	<h3>태어난 날로부터 현재까지의 년 수 구하기</h3>
+	<input type="button" onclick="proc1()" value="확인">
+	<div id="result1" class="result"></div>
+</div>
+
+  <div class="box">
+	<h3>현재로부터 100일 후 날짜 구하기</h3>
+	<input type="button" onclick="proc2()" value="확인">
+	<div id="result2" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>구입 날짜를 선택하여 7일이 경과했는지 비교</h3>
+	<h3>7일을 기준으로 교환 가능여부 출력</h3>
+	구입날짜 : <input type="date" id="sel">
+	<input type="button" onclick="proc3()" value="검사">
+	<div id="result3" class="result"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+전송
+
+<form action="aa.jsp" method="post">
+
+    submit할때
+
+
+
+전송안됨
+
+<form action="aa.jsp" method="post" onsubmit="return false;">
+
+    submit할때
+
+전송 전 script실행
+<form action="aa.jsp" method="post" onsubmit="return false;">
+
+    input type=button/ button type=button -onclick 이벤트 가능
+    input type=submit / button type=submit 
+
+스크립트에서
+   1. 버튼 일때(type) 
+      $('input[type=button]').on('click',function(){ });
+    
+   2. submit일때(type) - form을 이용
+      $('form').on('submit',function(){  });
+      

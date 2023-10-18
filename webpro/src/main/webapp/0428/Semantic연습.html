@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body {
+	border: 6px outset blue;
+}
+
+header, aside, section, footer {
+	box-sizing: border-box;
+	border-radius: 40px;
+	margin: 4px;
+}
+
+h3, h4 {
+	margin: 10px;
+}
+
+header {
+	background-color: yellow;
+	text-align: center;
+	height: 120px;
+	padding: 10px;
+}
+
+footer {
+	background-color: #A0A0FF;
+	text-align: center;
+	height: 40px;
+	padding: 10px;
+}
+
+aside {
+	width: 30%;
+	background: #FF88A7;
+	height: 400px;
+}
+
+img {
+	width: 180px;
+	height: 180px;
+}
+
+section {
+	width: 70%;
+	background-color: #ACF3FF;
+	height: 400px;
+
+}
+
+div.d1 {
+	border: 2px dotted green;
+	border-radius: 30px;
+	width: 95%;
+	height: 42%;
+	margin: 20px;
+	background: #55EE94;
+}
+
+div#asidesection {
+	display: flex;
+	border: none;
+	width: 100%;
+	margin: 8px;
+}
+a{
+	font-weight: bold;
+	text-decoration: none;
+}
+a:link{
+	color : white;
+}
+
+a:visited{
+	color : yellow;
+}
+
+
+p{
+	padding : 7px;
+}
+
+@media screen and (max-width : 600px){
+	aside, section{
+		width : 100%;
+	}
+}
+</style>
+
+</head>
+<body>
+	<header>
+		<h2>My Blog Page</h2>
+		<p>시멘틱 태그로 만들어진 페이지 입니다.</p>
+	</header>
+	<div id="asidesection">
+		<aside>
+			<h3>Links</h3>
+			<ul>
+				<li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
+				<li><a href="https://www.naver.com/" target="_blank">Naver</a></li>
+				<li><a href="https://www.daum.net/" target="_blank">Daum</a></li>
+			</ul>
+			<figure>
+				<img alt="spongebob.png" src="../images/spongebob.png">
+				<figcaption>스폰지밥</figcaption>
+			</figure>
+		</aside>
+		<section>
+			<div class="d1">
+				<h4>Semantic Tags</h4>
+				<p>시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는
+					요소이다. 레이아웃을 만들때 쓰는 것. 의미가 있는 요소라면 div보다는 시멘틱 태그를 사용해준다.</p>
+			</div>
+			<div class="d1">
+				<h4>div와 span</h4>
+				<p>div은 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span요소는
+					인라인 요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.</p>
+			</div>
+		</section>
+	</div>
+	<footer>Copyright (c)2019 Hong</footer>
+</body>
+</html>

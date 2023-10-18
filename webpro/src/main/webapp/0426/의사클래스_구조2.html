@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table{
+	border : 2px solid blue;
+	margin : 20px;
+}
+
+td{
+	width : 250px;
+	height : 50px;
+	text-align: center;
+}
+
+th{
+	height : 50px;
+}
+
+table#tab2{
+	border : 5px inset blue;
+}
+
+#tab1 tr:nth-child(2n-1){
+	background-color : lightgreen;
+}
+#tab2 tr:nth-child(2n-1){
+	background-color : lightgreen;
+}
+
+#tab2 tr:nth-child(2n){
+	background-color : lightblue;
+}
+
+#tab1 tr:first-child, #tab2 tr:first-child{
+	background : black;
+	color : white;
+}
+
+#tab3 td:first-child{
+	background-color : red;
+}
+#tab3 td:nth-child(2){
+	background-color : orange;
+}
+#tab3 td:nth-child(3){
+	background-color : yellow;
+}
+#tab3 td:nth-child(4){
+	background-color : green;
+}
+#tab3 td:nth-child(5){
+	background-color : lightblue;
+}
+#tab3 tr:first-child td{
+	background : blue;
+	color : white;
+}
+
+
+</style>
+</head>
+<body>
+
+<table border="1" id="tab1">
+	<tr>
+		<th>이름</th>
+		<th>주소</th>
+		<th>전화번호</th>
+		<th>이메일</th>
+		<th></th>
+	</tr>
+	
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+</table>
+
+<table border="1" id="tab2">
+	<tr>
+		<th>이름</th>
+		<th>주소</th>
+		<th>전화번호</th>
+		<th>이메일</th>
+		<th></th>
+	</tr>
+	
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+</table>
+
+<table border="1" id="tab3">
+	<tr>
+		<td>이름</td>
+		<td>주소</td>
+		<td>전화번호</td>
+		<td>이메일</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body{
+	width: 1400px;
+	height : 800px;
+	padding : 10px;
+}
+.card-group{
+	width : 100%;
+	height : 100%;
+	margin: auto;
+	
+}
+.card img{
+	width : 300px;
+	height : 300px;
+	
+}
+
+.card-group{
+	display : flex;
+}
+.card{
+	margin : auto;
+	font-size : 20px;
+}
+.bestseller{
+	color : orange;
+	font-size : 20px;
+}
+.card-price{
+	font-size : 17px;
+	font-weight: bold;
+	
+}
+h5{
+	font-size : 22px;
+}
+#salePrice{
+	text-decoration:line-through;
+	color : gray; 
+}
+
+#sale{
+	color : green;
+	font-weight: bold;
+	
+	
+}
+.text-body-secondary a:hover{
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 18px;
+}
+</style>
+<script>
+function moveToShopcart() {
+	if(confirm("장바구니에 담았습니다. \n장바구니로 이동하시겠습니까?")){
+		// 장바구니로 이동
+		window.open('about:blank').location.href = "shopcart.html";
+	}
+}
+</script>
+</head>
+<body>
+<div class="card-group">
+  <div class="card">
+    <img src="../images/hat1.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="bestseller">For Members</h5>
+      <h5 class="card-title">나이키 스포츠웨어</h5>
+      <p class="card-text">피셔맨 비니<br>4개 색상</p><br><br>
+      <p class="card-price"><span id="sale">40%할인</span><br>19,800원 <span id="salePrice">33,000원</span></p>
+    </div>
+    <div class="card-footer">
+     <small class="text-body-secondary"> <a onclick="moveToShopcart()">장바구니 담기</a></small>
+    </div>
+  </div>
+  <div class="card">
+    <img src="../images/hat2.png" class="card-img-top" alt="...">
+    <div class="card-body">
+       <h5 class="bestseller">For Members</h5>
+      <h5 class="card-title">나이키 스포츠웨어</h5>
+      <p class="card-text">헤리티지86 퓨추라 워시드<br>3개 색상</p><br><br>
+      <p class="card-price"><span id="sale">10%할인</span><br>26,100원 <span id="salePrice">29,000원</span></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-body-secondary"> <a onclick="moveToShopcart()">장바구니 담기</a></small>
+    </div>
+  </div>
+  <div class="card">
+    <img src="../images/hat3.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="bestseller"><br></h5>
+      <h5 class="card-title">나이키 스포츠웨어</h5>
+      <p class="card-text">버킷 햇<br>4개 색상</p><br><br>
+      <p class="card-price">33,000원<br><br></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-body-secondary"> <a onclick="moveToShopcart()">장바구니 담기</a></small>
+    </div>
+  </div>
+  <div class="card">
+    <img src="../images/hat4.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="bestseller"><br></h5>
+      <h5 class="card-title">조던 드라이 핏 점프맨</h5>
+      <p class="card-text">헤드밴드<br>1개 색상</p><br><br>
+      <p class="card-price">23,000원<br><br></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-body-secondary"> <a onclick="moveToShopcart()">장바구니 담기</a></small>
+    </div>
+  </div>
+</div>
+</body>
+</html>

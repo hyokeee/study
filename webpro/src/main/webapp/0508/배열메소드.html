@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+arr = ["사과","바나나","복숭아","참외","사과","파인애플","수박","사과"];
+
+function proc1(){
+	//찾는 과일 이름을 입력
+	fr = prompt("찾는 과일 입력");
+	//입력한 이름의 과일이 배열에서 몇번째 있는지 검사 - indexOf(과일이름)
+	if(arr.indexOf(fr)!=-1){res = `${fr}은 ${arr.indexOf(fr)}번째 있습니다.`;
+	} else{
+		res = `없습니다.`;
+	}
+	
+	//결과를 출력
+	str = `찾는 과일은 ${fr}입니다.<br>`;
+	str+= `${res}`;
+	document.getElementById("result1").innerHTML = str;
+}
+
+proc2 = function(){
+	//입력
+	fr = prompt("입력");
+	
+	str = `찾는 과일 : ${fr} <br>`
+	//찾기
+	idx = arr.lastIndexOf(fr);
+	
+	if(idx == -1){
+		str += "없습니다";
+	} else{
+		str += `${idx}번 째 있습니다.`;
+	}
+	
+	document.getElementById("result2").innerHTML = str;
+}
+
+proc3 = () => {
+	
+	//입력
+	fr = prompt("입력");
+	
+	
+	str = `찾는 과일 : ${fr} <br>`;
+	flag = true;	//처음에 찾는 과일값이 없을때 있을때 구분 하기 위한 변수
+	
+	idx = 0;
+	
+	/* if(arr.indexOf(fr)==-1){
+		str += "없습니다.";
+		document.getElementById("result3").innerHTML = str;
+		return;
+	} 내가 혼자 해본 방법..*/
+	while(true) {
+		//fr을 0번째부터 찾아라
+		idx = arr.indexOf(fr,idx);
+		
+		if(idx==-1) {
+			break;		//못찾았을때도 여기로 와서 break가 되는데 flag는 true인 상태
+		}
+		
+		str += `${idx}, `;
+		idx++;	
+		flag = false;	//하나라도 찾으면 flag는 false로 변함
+	}
+	
+	//str = 찾는과일 사과
+	//		0, 4, 7, << 마지막 ","를 제거하려면 ????
+	
+	//방법1)전체에서 마지막", "를 찾아 위치를 a로 받고 a 전까지 slice한다 slice(0,a)
+	/* a = str.lastIndexOf(', ');
+	str=str.slice(0,a); */
+	//방법2)전체 str에서 마지막 ", " 만 빼버리면 된다. slice(0,length-2)
+	str = str.slice(0,str.length-2)+" ";
+	
+	if(flag){
+		str += "없습니다."
+	} else {
+		str+= "번째 있습니다."	
+	}
+	document.getElementById("result3").innerHTML = str;
+}
+
+function proc4(){
+	//배열에 추가 - push(a,b,c.....)
+	
+	str = `원래 배열 : ${arr} <br>`;
+	
+	arr.push("딸기",100,200);
+	
+	str += `추가 후 배열 : ${arr}`;
+	
+	document.getElementById("result4").innerHTML = str;
+}
+
+proc5 = () => {
+	//배열에서 -pop() {return ssskksks}
+	str = `원래 배열 : ${arr} <br>`;
+	popvalue = arr.pop();
+	str += `삭제요소 : ${popvalue} <br>`;
+	str += `삭제 후 배열 : ${arr}`;
+	document.getElementById("result5").innerHTML = str;
+}
+
+
+proc6=()=>{
+	str = `원래 배열 : ${arr} <br>`;
+	newarr = arr.slice(1,4); 
+	str += `자른 후 배열(slice(1,4)) : ${newarr} <br>`;
+	document.getElementById("result6").innerHTML = str;
+}
+
+proc7 = () => {
+	//splice(index,n,a,b,c) index위치에서 n개 삭제 하고 a b c 값 넣는다
+	str = `원래 배열 : ${arr} <br>`;
+	arr.splice(2,1,100,200);
+	str += `변경된 배열 : ${arr}`;
+	document.getElementById("result7").innerHTML = str;
+}
+
+proc8 = () => {
+	arr2 = [100,200,300, 400, 500];
+	
+	str = `arr 배열 : ${arr} <br>`;
+	str += `arr2 배열 : ${arr2} <br>`;
+	newarr = arr.concat(arr2);  //arr2.concat(arr);
+	str += `변경된 배열 : ${newarr} <br>`;
+	
+	document.getElementById("result8").innerHTML = str;
+}
+
+proc9 = () =>{
+	str = `배열길이 : ${arr.length} <br>`
+	str += `배열 : ${arr}<br>`;
+	newstr = arr.join(" and ");
+	
+	str += `문자열 길이 : ${newstr.length}<br>`
+	str += `문자열 : ${newstr}<br>`;
+	
+	document.getElementById("result9").innerHTML = str;
+	
+	str2 = "<br>배열출력<br>"
+	for(i=0; i<arr.length; i++){
+		str2 += i + " : " + arr[i] + "<br>";
+	}
+	
+	str2 += "문자열출력<br>";
+	for(i=0; i<newstr.length; i++){
+		str2 += i + " : " +  newstr[i] + "<br>";
+	}
+	
+	document.getElementById("result9").innerHTML += str2;
+}
+</script>
+</head>
+<body>
+
+  <div class="box">
+	<h3>찾기</h3>
+	<input type="button" onclick="proc1()" value="indexOf">
+	<input type="button" onclick="proc2()" value="lastIndexOf">
+	<input type="button" onclick="proc3()" value="여러개 찾기">
+	<div id="result1" class="result"></div>
+	<div id="result2" class="result"></div>
+	<div id="result3" class="result"></div>
+</div>
+
+<div class="box">
+	<h3>추가 삭제</h3>
+	<input type="button" onclick="proc4()" value="push">
+	<input type="button" onclick="proc5()" value="pop">
+	
+	<div id="result4" class="result"></div>
+	<div id="result5" class="result"></div>
+	
+</div>
+
+<div class="box">
+	<h3>자르기</h3>
+	<input type="button" onclick="proc6()" value="slice">
+	<input type="button" onclick="proc7()" value="splice">
+	
+	<div id="result6" class="result"></div>
+	<div id="result7" class="result"></div>
+	
+</div>
+<div class="box">
+	<h3>합치기/문자열변환</h3>
+	<input type="button" onclick="proc8()" value="concat">
+	<input type="button" onclick="proc9()" value="join">
+	
+	<div id="result8" class="result"></div>
+	<div id="result9" class="result"></div>
+	
+</div>
+</body>
+</html>

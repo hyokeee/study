@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function proc(){
+		let today = new Date();
+		
+		//id가 res인 요소를 검색 후 출력
+		document.getElementById("res").innerHTML = today;
+		document.querySelector("#res").innerHTML = today;
+		
+		console.log(today);
+		//창이 바뀌기때문에 실제로 쓰지 않고 test 용으로만 사용
+		//document.write(today);
+	}
+</script>
+<style>
+div{
+	border : 1px solid blue;
+	padding : 20px;
+}
+</style>
+</head>
+<body>
+	<input type="button" value="확인" onclick="proc()">
+	<br>
+	<div id="res"></div>
+</body>
+</html>

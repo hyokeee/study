@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png"/>
+</head>
+<body>
+
+	<form action="새로운타입.jsp" method="post">
+		<label for="id">아이디</label>
+		 <input type="text" name="id" readonly id="id" value="a001">
+		 <br>
+		 <input type="hidden" name="age" value="20">
+		 
+		 <label for="name">이름</label>
+		 <input type="text" name="name" disabled id="name" value="홍길동">
+		 <br>
+		 <label for="pw">비밀번호</label>
+		 <input type="password" required name="pw" id="pw">
+		 <br>
+		 <label for="tel">전화번호</label>
+		 <input type="text" name="tel" id="tel" title="010-1234-5678" 
+		 required pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+		 <input type="submit">
+	</form>
+</body>
+</html>

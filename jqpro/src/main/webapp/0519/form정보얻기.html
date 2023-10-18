@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+    //$(document).ready(function(){})
+    //$(function(){})
+    $(()=>{
+        str = "";
+        $('#btnview').on('click',()=>{
+            //입력한 정보를 가져온다 - input으로 입력했으니까 val()
+
+            let vuser = "이름 : " + $('#user').val() + "<br>";
+            let vgend = "성별 : " +$('.gend:checked').val() + "<br>";
+            let vintro = "소개 : <br>" +$('#intro').val() + "<br>";
+            let vwork = "직업 : " +$('#work option:selected').val() + "<br>";
+
+            vintro = vintro.replace(/\r/g,"").replace(/\n/g,"<br>");
+
+            str = vuser + vgend + vintro + vwork;
+            $('#result1').html(str);
+        })
+
+        $('#btnchange').on('click',()=>{
+            event.preventDefault(); //button의 고유 기능을 제거
+            //이름을 입력한다. -prompt 
+            let vname = prompt("이름을 입력하세요");
+            //id="user"인 text에 출력 = text의 내용을 변경
+            $('#user').val(vname);
+        })
+    })
+changePage = () => {
+    //나이를 입력한다
+    let vage = prompt("나이를 입력하세요");
+    //15세 이상이면 네이버로 수행 아니면 이동 불가
+    if(vage<15) {
+        event.preventDefault();
+        alert("15세 미만 접근 불가");
+    }    
+
+   
+   
+}
+</script>
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+</head>
+<body>
+
+<div class="box">
+    <h3></h3>
+    <input type="button" value="확인" id="btn1">   
+    <form>
+        <label for="user">이름</label>
+        <input type="text" id="user" value="korea"><br>
+
+        <label for="gend" >성별</label> 
+        <input type="radio" class="gend" name="gend" value="남자" checked >남자
+        <input type="radio" class="gend" name="gend" value="여자">여자<br>
+
+        <label for="intro">소개</label> <br>
+        <textarea id="intro" cols="40" rows="4"></textarea> <br>
+
+        <label for="work">직업</label>
+        <select id="work">
+            <option value="programmer">프로그래머</option>
+            <option value="progammer">프로게이머</option>
+            <option value="whitehand">백수</option>
+        </select><br>
+
+        <button type="button" id="btnview">조사하기 </button>
+        <button  id="btnchange" >이름변경 </button>
+
+        <a href="http://www.naver.com" onclick="changePage()">네이버</a>
+    </form>
+    <div id="result1" class="result"></div>
+</div>
+</body>
+</html>

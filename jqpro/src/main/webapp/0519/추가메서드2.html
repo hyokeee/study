@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+    $(()=>{
+        $('p').on('click', function() {
+            
+            vtext = $(this).text();
+
+            vimg = $('<img>', {
+                'src' : '../images/' + vtext,
+                'alt' : vtext
+            });
+
+          // $(this).append(vimg);
+          // vimg.appendTo($(this));
+
+          // $(this).prepend(vimg);
+          // vimg.prependTo($(this));
+
+          //   $(this).after(vimg);
+             vimg.insertAfter($(this));
+
+          // $(this).before(vimg);
+         // vimg.insertBefore($(this));
+
+        })
+
+    })
+
+</script>
+<style>
+    img{
+        width : 50px;
+        height : 50px;
+    }
+
+    p{
+        padding : 10px;
+        margin : 5px;
+        border : 2px dotted orange;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h3></h3>
+    <!-- <input type="button" value="append" id="btn1">
+    <input type="button" value="prepend" id="btn2"> -->
+    <p class="result1" title="스포츠.jpg">스포츠.jpg</p>
+    <p class="result1" title="스포츠1.jpg">스포츠1.jpg</p>
+    <p class="result1" title="스포츠2.jpg">스포츠2.jpg</p>
+    <p class="result1" title="스포츠3.jpg">스포츠3.jpg</p>
+    
+</div>
+</body>
+</html>

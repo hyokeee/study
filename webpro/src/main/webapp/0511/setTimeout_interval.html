@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+    proc1 = () => {
+
+        setTimeout( () => {
+            //result1으로 접근 검색
+            vres = document.querySelector("#result1");
+            //배경색을 변경
+            vres.style.backgroundColor = "pink";
+        }
+        ,500);
+
+    }
+
+    proc2 = () => {
+
+        //확인 버튼 클릭시 실행되는 함수
+        //확인 버튼을 안보이도록 설정
+        document.querySelector("#start").style.display = "none";
+    /*
+        vid = setInterval(()=>{
+            vres = document.querySelector("#result2");
+            r1 = parseInt(Math.random()*256);
+            r2 = parseInt(Math.random()*256);
+            r3 = parseInt(Math.random()*256);
+            
+            vres.style.backgroundColor = `rgb(${r1},${r2},${r3})`;
+
+            console.log(vid);
+           
+        },500);
+    */
+         vid = setTimeout(function run() {
+            vres = document.querySelector("#result2");
+            cr = parseInt(Math.random()*256);
+            cg = parseInt(Math.random()*256);
+            cb = parseInt(Math.random()*256);
+            
+            //vres.style.backgroundColor = `rgb(${cr},${cg},${cb})`;
+
+            //16진수로 변경
+            cr16 = cr.toString(16);
+            cg16 = cg.toString(16);
+            cb16 = cb.toString(16);
+            vres.style.backgroundColor = "#"+cr16+cg16+cb16;
+
+           vid = setTimeout(run,500);
+           
+        },500);
+    }
+
+    stop = () => {
+        //종료 버튼 클릭 시 실행되는 함수
+        //확인 버튼을 다시 나타나도록 설정
+        document.querySelector("#start").style.display = "inline";
+        clearInterval(vid);
+
+    }
+</script>
+<style>
+    #result1{
+        background-color: yellow;
+    }
+</style>
+</head>
+<body>
+<div class="box">
+    <h3>setTimeout(function(){},millisec)</h3>
+    <h3>지정된 millisec 시간이 경과 후에 function(){}을 실행 후 종료한다.</h3>
+    <input type="button" value="확인" onclick="proc1()">
+    <div id="result1" class="result"></div>
+</div>
+    
+<div class="box">
+    <h3>setInterval(function(){},millisec)</h3>
+    <h3>지정된 millisec 시간이 경과할 때마다 반복적으로 function(){}을 실행한다.</h3>
+    <h3>종료 하기 위해서 clearInterval(id변수)를 호출한다.</h3>
+    <input type="button" id="start" value="확인" onclick="proc2()">
+    <input type="button" id="stop" value="종료" onclick="stop()">
+    <div id="result2" class="result"></div>
+</div>
+</body>
+</html>

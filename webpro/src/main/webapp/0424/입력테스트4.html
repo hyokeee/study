@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+function calc(){
+	/*
+	//html요소에 접근
+	vprice = document.getElementById('price');
+	vsu = document.getElementById('su');
+	
+	//요소에서 입력한 값 가져오기 -value
+	priceValue = vprice.value;
+	suValue = vsu.value;
+	*/
+	//한번에 요소에 접근해서 값을 가져올 수도 있다.
+	priceValue = document.getElementById('price').value;
+	suValue = document.getElementById('su').value;
+	//계산 
+	result = priceValue * suValue;
+	
+	//출력
+	alert(vresult);
+	console.log(result);
+	
+	//div요소를 검색하여 출력
+	//vdiv = document.querySelector("div");
+	//vidv.innerHTML = result;
+	document.querySelector("div").innerHTML = result;
+}
+
+</script>
+<style>
+	div{
+	border : 3px dotted orange;
+	margin : 10px;
+	padding : 10px;
+	}
+
+</style>
+</head>
+<body>
+
+  <form action="입력처리4.jsp" method="post">
+  물품가격: <input type="text" name="price" id="price"> <br>
+  수량: <input type="text" name="su" id="su"> <br>
+  <input type="button" value="결과" onclick="calc()">
+  
+  
+  
+  </form>
+  <h2>결과</h2>
+  <div>
+  
+  </div>
+</body>
+</html>

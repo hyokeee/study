@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>e
+<style>
+table{
+	border : 2px solid blue;
+	border-collapse: collapse;
+}
+td{
+	width : 200px;
+	height : 50px;
+	text-align : center;
+}
+
+tr:first-child{
+	background : skyblue;
+}
+</style>
+<script>
+$(function(){
+	
+	$('#btn1').on('click',function(){
+		
+		$.ajax({
+			url : 'lprod.jsp',
+			type : 'get',
+			success : function(res){
+				code = "";
+				$.each(res,function(i,v){
+					code += `Lprod_ID : ${v.id} <br>
+							Lprod_GU : ${v.gu} <br>
+							Lprod_NM : ${v.nm} <br>
+							<hr color='blue'>`
+				})
+				$('#result1').html(code);
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+		
+	})
+	
+	$('#btn2').on('click',function(){
+		$.ajax({
+			url : 'lprod.jsp',
+			type : 'get',
+			success : function(res){
+				code = `<table border="1">
+						<tr>
+							<td>LPROD_ID</td>
+							<td>LPROD_GU</td>
+							<td>LPROD_NM</td>
+						</tr>`					
+				$.each(res,function(i,v){
+					code += `<tr>
+								<td>${v.id}</td>
+								<td>${v.gu}</td>
+								<td>${v.nm}</td>
+							 </tr>`
+				})
+				code += `</table>`
+				$('#result2').html(code);
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+})
+</script>
+
+
+</head>
+<body>
+
+<div class="box">	
+	<input type="button" value="리스트" id="btn1">
+	<input type="button" value="테이블" id="btn2">
+	<div id="result1" class="result"></div>
+	<div id="result2" class="result"></div>
+</div>
+</body>
+</html>

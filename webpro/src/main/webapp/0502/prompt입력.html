@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	border : 1px solid blue;
+	margin : 10px;
+	padding: 20px;
+}
+</style>
+<script>
+window.onload = function(){
+	let su1 = parseInt(prompt("정수 입력","1~100사이"));
+	let su2 = parseInt(prompt("정수 입력","1~100사이"));
+	let sum = su1 + su2;
+	
+	//출력 내용
+	//str = su1 + " + " + su2 + " = " + sum + "<br>";
+	
+	//백틱을 이용한 템플릿리터럴작성
+	let str = `${su1} + ${su2} = ${sum} <br>`;
+
+	//id가 res인 요소에 출력
+	document.querySelector("#res").innerHTML = str;
+}
+</script>
+</head>
+<body>
+<div id ="res"></div>
+</body>
+</html>

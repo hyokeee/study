@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+
+let xhr = new XMLHttpRequest();
+$(function(){
+	$('#getbtn').on('click',function(){
+		
+		// 입력한 값을 가져온다.
+		let vname = $('#name').val();
+		let vage  = $('#age').val();
+		
+		// 전송 요청
+		xhr.open("GET","ajaxForm.jsp?name=" + vname + "&age=" + vage);
+		xhr.send();
+		
+		// 결과 응답
+		xhr.onreadystatechange = function(){
+			//alert(this.resadyState);
+			if(this.readyState == 4 && this.status == 200){
+			   res = this.responseText;
+			   //res = <p> 당신의 이름은 <%= userName %> 이고 </p>
+			   //	   <p> 당신의 나이는 <%=  userAge %> 이군요 </p>
+			   $('.res').html(res);
+			}
+		}
+		
+	})
+	
+	$('#postbtn').on('click',function(){
+		
+		// 입력한 값을 가져온다.
+		let vname = $('#pname').val();
+		let vage  = $('#page').val();
+		
+		// 전송 요청
+		
+		data = "name=" + vname + "&age=" + vage;
+		xhr.open("POST", "ajaxForm.jsp", true);
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xhr.send(data);
+		
+		// 결과 응답
+		xhr.onreadystatechange = function(){
+			//alert(this.resadyState);
+			if(this.readyState == 4 && this.status == 200){
+			   res = this.responseText;
+			   $('.postres').html(res);
+			}
+		}
+		
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+    <h3>동기방식처리 get</h3>
+    
+    <div id="result1" class="result">
+        <form action="ajaxForm.jsp" method="get">
+            <label for="name">이름</label>
+            <input name="name">
+
+            <label for="age">나이</label>
+            <input name="age">
+            <br>
+            <input type="submit" value="전송">
+        </form>
+    </div>
+</div>
+
+<div class="box">
+    <h3>동기방식처리 post</h3>
+   
+    <div id="result2" class="result">
+		<form action="ajaxForm.jsp" method="post">
+            <label for="name">이름</label>
+            <input name="name">
+
+            <label for="age">나이</label>
+            <input name="age">
+            <br>
+            <input type="submit" value="전송">
+        </form>
+    </div>
+</div>
+
+<div class="box">
+    <h3>비동기방식처리 get</h3>
+   
+    <div id="result3" class="result">
+		<form action="ajaxForm.jsp" method="get">
+            <label for="name">이름</label>
+            <input name="name" id="name">
+
+            <label for="age">나이</label>
+            <input name="age" id="age">
+            <br>
+            <input type="button" value="전송" id="getbtn">
+        </form>
+    </div>
+    
+    <div class="res">
+    
+    
+    </div>
+    
+</div>
+
+<div class="box">
+    <h3>비동기방식처리 post</h3>
+   
+    <div id="result4" class="result">
+		<form action="ajaxForm.jsp" method="get">
+            <label for="name">이름</label>
+            <input name="name" id="pname">
+
+            <label for="age">나이</label>
+            <input name="age" id="page">
+            <br>
+            <input type="button" value="전송" id="postbtn">
+        </form>
+    </div>
+    
+    <div class="postres">
+    
+    
+    </div>
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/calcfunction.js"></script>
+<script>
+calc = (a) => {
+	//입력한 값 가져오기
+	let v1 = parseInt(document.getElementById("x").value);
+	let v2 = parseInt(document.getElementById("y").value);
+	
+	//결과 담아줄 변수 선언
+	let result = "";
+	// a 값 비교
+	switch(a){
+	case "+" :
+		result = add(v1,v2);
+		break;
+	case "-" :
+		result = sub(v1,v2);
+		break;
+	case "*" :
+		result = multi(v1,v2);
+		break;
+	case "/" :
+		result = divide(v1,v2);
+		break;
+	default :
+		break;
+	}
+	//출력 내용
+	str = ` ${v1} ${a} ${v2} = ${result}`;
+	
+	
+	//출력
+	document.getElementById("sum").value = result;
+	document.getElementById("sp1").innerHTML = v1;
+	document.getElementById("sp2").innerHTML = v2;
+	document.getElementById("sp3").innerHTML = str;
+}
+
+
+
+</script>
+</head>
+<body>
+
+   <form>
+      첫번째 :<input id="x"><br>
+      두번째 :<input id="y"><br>
+      결과 :<input id="sum"><br>
+      <input type="button"  onclick="calc('+')" value="+">
+      <input type="button"  onclick="calc('-')" value="-">
+      <input type="button"  onclick="calc('*')" value="*">
+      <input type="button"  onclick="calc('/')" value="/"><br>
+      <p>첫번째 값 :<span id="sp1"></span> </p>
+      <p>두번째 값 :<span id="sp2"></span> </p>
+      <p>결과 :<span id="sp3"></span> </p>	  
+    </form>
+
+</body>
+</html>

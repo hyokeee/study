@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+label.lb1 {
+	width: 120px;
+	text-align: center;
+	display: inline-block;
+	font-weight: bold;
+}
+
+input#pw, input#checkpw {
+	width: 250px;
+}
+
+input#id, input#mail {
+	width: 180px;
+}
+</style>
+<script>
+	function check_pw() {
+		var pw = document.getElementById("pw").value;
+		var pw2 = document.getElementById("checkpw").value;
+		var sc = [ "!", "@", "#", "$", "%" ];
+		var checkSc = 0;
+
+		for (var i = 0; i < sc.length; i++) {
+			if (pw.indexOf(sc[i]) != -1) {
+				checkSc = 1;
+			}
+		}
+		if (checkSc == 0) {
+			window.alert("특수문자가 포함되어 있지 않습니다.")
+			document.getElementById("pw").value = "";
+		}
+
+		if (pw != '' && pw2 != '') {
+			if (pw == pw2) {
+				document.getElementById('check').innerHTML = "비밀번호가 일치합니다.";
+				document.getElementById('check').style.color = "blue";
+			} else {
+				document.getElementById('check').innerHTML = "비밀번호가 일치하지 않습니다.";
+				document.getElementById('check').style.color = "red";
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<form action="회원가입.jsp" method="post">
+		<h1>회원가입</h1>
+		<fieldset>
+			<legend>필수 입력 사항</legend>
+			<label class="lb1" for="id">ID</label> <input type="text" name="id"
+				id="id" placeholder="아이디 10글자 이내">
+			<button name="checkid">중복 확인</button>
+			<br> <label class="lb1" for="pw">비밀번호</label> <input
+				type="password" name="pw" id="pw" onchange="check_pw()"
+				placeholder="영문,숫자,특수문자 포함 8자 이상"><br> <label
+				class="lb1" for="checkpw">비밀번호 확인</label> <input type="password"
+				name="checkpw" id="checkpw" onchange="check_pw()"><span
+				id="check"></span><br> <label class="lb1" for="mail">Email</label>
+			<input type="text" name="mail" id="mail"> <select
+				name="mail2">
+				<option value=" ">직접입력</option>
+				<option value="naver">naver.com</option>
+				<option value="daum">daum.net</option>
+				<option value="gmail">gmail.com</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<legend>추가 정보</legend>
+			<label for="pic">프로필 사진</label> <input type="file"><br>
+			<br> <label for="gender">성별 : </label> <input name="gender"
+				type="radio" value="man">남자 <input name="gender"
+				type="radio" value="woman">여자<br>
+			<br> <label for="bir">생년월일 :</label> <input type="date"
+				name="bir"><br>
+			<br> <label for="hobby">취미</label><br> <input
+				type="checkbox" name="hobby" value="야구">야구 <input
+				type="checkbox" name="hobby" value="농구">농구 <input
+				type="checkbox" name="hobby" value="축구">축구<br> <input
+				type="checkbox" name="hobby" value="공부">공부 <input
+				type="checkbox" name="hobby" value="음악감상">음악감상<br> <input
+				type="checkbox" name="hobby">기타<input type="text"
+				name="hobby"> <br>
+			<br> <label for="c">자기소개</label><br>
+			<textarea rows="10" cols="100" name="intro"></textarea>
+		</fieldset>
+		<br> <input type="submit" value="회원가입">
+		<button type="reset">다시입력</button>
+		<input type="button" value="이전으로">
+	</form>
+
+
+</body>
+</html>

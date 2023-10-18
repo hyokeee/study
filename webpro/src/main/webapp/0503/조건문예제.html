@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/mystyle.css">
+<title>Insert title here</title>
+<script>
+function proc1(){
+	
+	//두개의 수와 연산자를 입력한다.
+	let su1 =prompt("첫번째 사람의 가위 바위 보를 입력하세요");
+	let su2 =prompt("두번째 사람의 가위 바위 보를 입력하세요");
+	
+	//비교
+	let result="";
+	if((su1=="가위"||su1=="바위"||su1=="보")&&(su2=="가위"||su2=="바위"||su2=="보")){
+		if(su1==su2){
+			result = "비겼습니다."
+		} else if(su1=="가위"&&su2=="보"||su1=="바위"&&su2=="가위"||su1=="보"&&su2=="바위"){
+			result = "첫번째 사람 승리"
+		} else{
+			result = "두번째 사람 승리"
+		}
+	} else{
+		result = "잘못 입력하셨습니다.";
+	}
+	//출력 내용 = str
+	str = `첫번째 사람 : ${su1} <br> 두번째 사람 : ${su2} <br><br> 결 과 : ${result}`
+	//출력
+	document.getElementById("result1").innerHTML = str;
+	
+}
+		
+	
+
+</script>
+</head>
+<body>
+<div class = "box">
+   <h3>prompt를 이용하여 가위 바위 보를 입력한다.</h3>
+   <h3>입력값을 비교하여 결과를 출력한다.</h3>
+   
+   <input type="button" value="확인" onclick="proc1()">
+   <br><br>
+   <div id="result1" class="result"></div>
+</div>
+</body>
+</html>

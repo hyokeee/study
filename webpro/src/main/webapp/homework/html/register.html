@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+fieldset{
+	width : 600px;
+	height : 350px;
+	margin : auto;
+}
+form h1{
+	text-align: center;
+}
+label.lb1 {
+	width: 120px;
+	text-align: center;
+	display: inline-block;
+	font-weight: bold;
+	margin-top : 3px;
+}
+input{
+	margin-top : 3px;
+}
+
+input#pw, input#checkpw {
+	width: 200px;
+}
+
+input#id, input#mail {
+	width: 180px;
+}
+#registerdisplay{
+	margin : auto;
+	padding : 50px;
+}
+.button{
+	width : 200px;
+}
+#check{
+	font-size: 12px;
+}
+#back{
+	text-align: center;
+	margin :  5px auto;
+}
+
+</style>
+<script>
+function check_pw() {
+	var pw = document.getElementById("pw").value;
+	var pw2 = document.getElementById("checkpw").value;
+	var sc = [ "!", "@", "#", "$", "%" ];
+	var checkSc = 0;
+	
+	
+	for (var i = 0; i < sc.length; i++) {
+		if (pw.indexOf(sc[i]) != -1) {
+			checkSc = 1;
+		}
+	}
+	if (checkSc == 0) {
+		window.alert("특수문자가 포함되어 있지 않습니다.")
+		document.getElementById("pw").value = "";
+	}
+
+	if (pw != '' && pw2 != '') {
+		if (pw == pw2) {
+			document.getElementById('check').innerHTML = "비밀번호가 일치합니다.";
+			document.getElementById('check').style.color = "blue";
+		} else {
+			document.getElementById('check').innerHTML = "비밀번호가 일치하지 않습니다.";
+			document.getElementById('check').style.color = "red";
+		}
+	}
+}
+</script>
+</head>
+<body>
+<form action="회원가입.jsp" method="post">
+		<h1>회원가입</h1>
+		<fieldset>
+			<legend>회원정보입력</legend>
+			<div id = "registerdisplay">
+			<label class="lb1" for="id">ID</label> <input type="text" name="id"
+				id="id" placeholder="아이디 10글자 이내">
+			<input type="button" name="checkid" value="중복 확인">
+			<br>
+			<label class="lb1" for="pw">비밀번호</label>
+			<input type="password" name="pw" id="pw" onchange="check_pw()" placeholder="특수문자 포함">
+			<br>
+			<label class="lb1" for="checkpw">비밀번호 확인</label>
+			<input type="password" name="checkpw" id="checkpw" onchange="check_pw()">
+			<span id="check"></span>
+			<br>
+			<label class="lb1" for="name">이름</label>
+			<input type="text" name="name" id="name" placeholder="홍길동">
+			<br>
+			<label class="lb1" for="tel">휴대폰번호</label>
+			<input type="text" name="tel" id="tel" placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+			<br>
+			<label class="lb1" for="mail">이메일</label>
+			<input type="text" name="mail" id="mail" placeholder="abc123@gmail.com" pattern="[a-zA-Z]+[0-9]*@[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2}">
+			<br>
+			<label class="lb1" for="bir">생일</label>
+			<input type="date" name="bir" id="bir">
+			<br>
+			<label class="lb1" for="gender">성별</label>
+			<input type="radio" name="gender" value="남자">남자
+			<input type="radio" name="gender" value="여자">여자
+			<br><br>
+			<input class="button" type="submit" value="회원가입">
+			<button  class="button" type="reset">다시입력</button>
+			</div>
+			<br>
+		<a id ="back" href="main.html">Back to Home</a>
+		</fieldset>
+		</form>
+</body>
+</html>

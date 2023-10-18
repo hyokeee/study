@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+    $('#hbtn2').on('click',function(){
+        str = "<h1>hidden결과</h1>";
+        $('#testForm *:hidden').each(function(){
+            //태그이름 비교
+            //alert(this.tagName);
+           if(this.tagName == "INPUT"){
+                str += this.tagName + "[" + $(this).attr('name') + " : " + $(this).val() + "]<br>";
+           } else {
+                str += this.tagName + " [" + $(this).text() + "]<br>"
+           }
+        })
+        $('#result3').html(str);
+    })
+
+    $('#vbtn2').on('click',function(){
+        str = "<h1>visible결과</h1>";
+        $('#testForm *:visible').each(function(){
+            //태그이름 비교
+            //alert(this.tagName);
+            if(this.tagName == "INPUT"){
+                vtype = $(this).attr('type');
+                if(vtype=='radio'){
+                  if($(this).prop('checked')){
+                     //체크되어 있는 항목의 값을 가져온다
+                     str += this.tagName + "[" + $(this).attr('name') + " : " + $(this).val() + "]<br>"
+                  }
+                }else{  //hidden text
+                    str += this.tagName + "[" + $(this).attr('name') + " : " + $(this).val() + "]<br>";
+                }
+            } else if(this.tagName !="BR"){
+                str += this.tagName + " [" + $(this).text() + "]<br>";
+            }
+        })
+        $('#result4').html(str);
+    })
+
+   $('#hbtn').on('click', function(){
+
+      str="";
+      $('p:hidden').each(function(i ,v){
+         str += $(this).text() + "<br>";
+      })
+      $('#result1').html(str);
+   })
+   
+   $('#vbtn').on('click', function(){
+      str = "";
+      $('p:visible').each(function(){
+         str += $(this).html() + "<br>";
+      })
+      
+      $('#result2').html(str);
+
+   })
+})
+
+
+</script>
+
+
+</head>
+<body>
+   <div class="box">
+      <p> 보이는 문단</p>
+      <p style="visibility:hidden;">숨겨진 문단</p>
+      <p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+      <p style="opacity:0;"> 투명한 문단</p>
+  
+      <input type="button" value="hidden" id="hbtn">
+      <input type="button" value="visible" id="vbtn">
+      <div id="result1" class="result"></div>
+      <div id="result2" class="result"></div>
+      
+   </div>
+
+   <div class="box">
+      <h3>라디오 버튼이 체크되었는지 검사 - if문 이용</h3>
+      <h3>속성상태설정 : prop(속성, true)/prop(속성,false)</h3>
+      <h3>속성상태얻기 : prop(속성)</h3>
+      checked, selected, disabled, readonly, multiple
+
+      <form id="testForm"> 
+         <input type="hidden" name="userAge" value="33">
+         <input type="hidden" name="userCity" value="대전">
+         <br>
+         I D : <input type="text" name="userID" value="hong">  
+         <span style="display:none">ID가 중복됩니다. </span> <br>  
+         <br>
+         이름 : <input type="text" name="userName" value="홍길동">   
+         <br>
+         <span style="visibility:hidden">이름을 입력하세요</span><br>  
+         성별 : <input type="radio" name="sung" value="남" checked>남자  
+         <input type="radio" name="sung" value="여">여자  
+      </form>
+
+      <br><br>
+
+      <input type="button" value="hidden" id="hbtn2">
+      <input type="button" value="visible" id="vbtn2">
+      <div id="result3" class="result"></div>
+      <div id="result4" class="result"></div>
+      
+   </div>
+</body>
+</html>

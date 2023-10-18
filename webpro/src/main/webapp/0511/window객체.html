@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+proc1 = () => {
+    // name = 논리적인 이름 ( 화면에 나타나지 않는다.)
+    window.open("../0504/confirm함수.html", "_blank","새로운창","width = 300 height =500 top=500 left=300");
+    // opener.document.
+}
+proc2 = () => {
+
+   window.open("subgugu.html", "구구단","width=500 height=400 top=200 left=200");
+   
+}
+
+</script>
+</head>
+<body>
+
+   <div class="box">
+      <h3>window 새창 열기 : window.open(url, name/target, spec)</h3>
+
+      <input type="button" value="확인" onclick="proc1()">
+      <div id="result1" class="result"></div>
+   </div>
+
+   <div class="box">
+      <h3>window 새창 열기 : window.open(url, name/target, spec)</h3>
+
+      <h3>새로운 창을 열어서 구구단 입력해서 부모창에 출력</h3>
+      <h3>새로운 창이 자식창이 되고 부모창을 참조(접근) 하기 위해서 opener를 사용한다</h3>
+      <input type="button" value="확인" onclick="proc2()">
+      <div id="result2" class="result"></div>
+   </div>
+</body>
+</html>

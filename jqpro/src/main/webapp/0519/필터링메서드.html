@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+<script>
+$(()=>{
+
+    $('#btn1').click(function(){
+
+        /* 
+        $('p:even').css('background','lightgreen');
+        $('p:first').css('background','pink');
+        $('p:last').css('background','skyblue');
+        $('p:eq(1)').css('background','gold');
+         */
+
+        /* 
+        $('p').even().css('background','lightgreen');
+        $('p').first().css('background','pink');
+        $('p').last().css('background','skyblue');
+        $('p').eq(1).css('background','gold');
+         */
+
+         $('p').filter(':even').css('background','lightgreen');
+         $('p').filter(':first').css('background','pink');
+         $('p').filter(':last').css('background','skyblue');
+         $('p').filter(':eq(1)').css('background','gold');
+
+    })
+
+    /* 
+    스크립트로 진행 시
+    vp = document.querySlelctorAll('p')
+    for(i=0; i<vp.length; i++){
+        vp[i].addEventListener('click',proc);
+    }
+
+    function proc(){
+
+    } 
+    */
+
+    // jquery 사용 시
+    $('p').click(function(){
+        
+         if($(this).parent().is('.result')) {
+            //클릭한 p태그를 복사해서 부모에 붙여넣어라
+            //글자색 빨강색으로 변경
+
+        /*    ptag =  $(this).clone();
+           ptag.css("color","red");
+           $(this).parent().append(ptag); */
+
+           $(this).clone(true).appendTo($(this).parent()).css("color","red");
+         } else {
+            alert("해당 작업 대상이 아닙니다");
+         }
+        
+    })
+})
+
+</script>
+</head>
+<body>
+
+<div class="box">
+    <p>무궁화 꽃이 피었습니다</p>
+    <p>장미 꽃이 피었습니다</p>
+    
+    <input type="button" value="확인" id="btn1">
+    <div id="result1" class="result"> 
+        <p>사랑은 늘 도망가</p>
+        <p>사랑해 진짜</p>
+        <p>별빛 같은 나의 사랑아</p>
+        <p>우리들의 블루스</p>
+        <p>폴라로이드</p>
+    </div>
+</div>
+</body>
+</html>
